@@ -1,0 +1,1273 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CrystalSMP – Dein Crystal-SMP · Launch am 3. November 2026, 16:30 Uhr</title>
+<meta name="description" content="CrystalSMP: Survival, Crystal-PvP, Duelle, Clans und Bedwars für Java und Bedrock. Launch am 3. November 2026 – live sehen, wer gerade online ist.">
+<link rel="icon" href="img/end_crystal.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b0a14;
+    --card: rgba(255,255,255,.045);
+    --card-2: rgba(255,255,255,.07);
+    --line: rgba(255,255,255,.09);
+    --fg: #f4f2ff;
+    --muted: #a49fbf;
+    --green: #4ade80;
+    --green-deep: #16a34a;
+    --yellow: #ffd34d;
+    --purple: #a66bff;
+    --pink: #ff6bd6;
+    --cyan: #5ee7ff;
+    --red: #ff6b7a;
+    --grad: linear-gradient(120deg, #a66bff, #ff6bd6 55%, #ffb36b);
+    --font-ui: "Outfit", system-ui, sans-serif;
+    --font-mc: "Pixelify Sans", "Outfit", monospace;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 120px; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--font-ui); font-size: 15.5px; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  body::before { content: ""; position: fixed; inset: 0; z-index: -10; pointer-events: none;
+    background: radial-gradient(900px 600px at 10% -10%, rgba(166,107,255,.18), transparent 60%), radial-gradient(800px 600px at 100% 30%, rgba(255,107,214,.10), transparent 60%), radial-gradient(900px 700px at 30% 110%, rgba(94,231,255,.10), transparent 60%), var(--bg); }
+  body::after { content: ""; position: fixed; inset: 0; z-index: -9; pointer-events: none; opacity: .5;
+    background-image: linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px); background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse at 50% 0%, #000 20%, transparent 75%); -webkit-mask-image: radial-gradient(ellipse at 50% 0%, #000 20%, transparent 75%); }
+  a { color: inherit; text-decoration: none; }
+  img { image-rendering: pixelated; }
+  .render { image-rendering: auto; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+  button { font-family: inherit; }
+  ::selection { background: rgba(166,107,255,.45); }
+
+  /* ================= Kopfzeile ================= */
+  header { position: sticky; top: 0; z-index: 30; background: rgba(11,10,20,.72); backdrop-filter: blur(16px) saturate(1.4); -webkit-backdrop-filter: blur(16px) saturate(1.4); border-bottom: 1px solid var(--line); }
+  .topbar { display: flex; align-items: center; gap: 22px; height: 68px; }
+  .brand { display: flex; align-items: center; gap: 12px; flex: none; }
+  .shield { width: 44px; height: 44px; display: grid; place-items: center; flex: none; border-radius: 12px; padding: 2px; background: var(--grad); box-shadow: 0 0 24px rgba(166,107,255,.55); }
+  .shield span { width: 100%; height: 100%; display: grid; place-items: center; border-radius: 10px; background: radial-gradient(circle at 50% 30%, #3b1f72, #0f0a1f 75%); }
+  .shield img { width: 26px; height: 26px; animation: hover-y 3s ease-in-out infinite; }
+  @keyframes hover-y { 50% { transform: translateY(-2px) scale(1.06); } }
+  .brand-name { font-weight: 800; font-size: 21px; letter-spacing: .06em; line-height: 1.05; background: linear-gradient(180deg, #fff, #d9ccff); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .brand-sub { font-size: 11px; color: var(--muted); letter-spacing: .03em; }
+  .brand-sub b { color: var(--cyan); font-weight: 600; }
+  nav { margin-left: auto; display: flex; gap: 4px; align-items: center; }
+  nav a { display: flex; align-items: center; gap: 6px; font-weight: 600; font-size: 14px; color: #cfc9e8; padding: 8px 10px; white-space: nowrap; border-radius: 999px; transition: background .2s, color .2s; }
+  nav a svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; }
+  nav a:hover { color: #fff; background: var(--card-2); }
+  nav a.on { color: #fff; background: rgba(166,107,255,.18); box-shadow: inset 0 0 0 1px rgba(166,107,255,.4); }
+  .btn-white { white-space: nowrap; flex: none; background: var(--grad); color: #fff; font-weight: 700; font-size: 14px; border: 0; border-radius: 999px; padding: 10px 18px; cursor: pointer; display: inline-flex; gap: 8px; align-items: center; box-shadow: 0 8px 24px rgba(255,107,214,.3); transition: transform .2s, box-shadow .2s; }
+  .btn-white:hover { transform: translateY(-1px); box-shadow: 0 10px 30px rgba(255,107,214,.45); }
+  .btn-white svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2.2; }
+  .subbar { display: flex; align-items: center; gap: 12px; height: 44px; border-top: 1px solid var(--line); }
+  .online-label { color: var(--muted); font-weight: 700; font-size: 12px; letter-spacing: .12em; }
+  .digits { display: flex; gap: 3px; }
+  .digits span { width: 19px; height: 25px; background: linear-gradient(180deg, #221a3d, #15102a); color: #fff; display: grid; place-items: center; font-family: var(--font-mc); font-size: 15px; border-radius: 5px; border: 1px solid rgba(166,107,255,.35); box-shadow: 0 0 10px rgba(166,107,255,.25); }
+  .sub-right { margin-left: auto; display: flex; align-items: center; gap: 16px; font-size: 13px; }
+  .live { display: flex; align-items: center; gap: 7px; color: var(--muted); font-size: 12px; font-weight: 600; }
+  .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--green); animation: pulse 1.6s infinite; flex: none; }
+  .dot.off { background: var(--red); animation: none; }
+  @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(74,222,128,.6); } 70% { box-shadow: 0 0 0 8px rgba(74,222,128,0); } 100% { box-shadow: 0 0 0 0 rgba(74,222,128,0); } }
+  .sub-link { font-weight: 600; color: #cfc9e8; font-size: 13px; }
+  .sub-link:hover { color: #fff; }
+  .btn-green { background: linear-gradient(135deg, #4ade80, #22c55e); color: #062b14; font-weight: 700; font-size: 13px; border: 0; border-radius: 999px; padding: 8px 16px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 6px 18px rgba(74,222,128,.28); transition: transform .2s, box-shadow .2s; }
+  .btn-green:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(74,222,128,.45); }
+
+  /* ================= Leuchtender Rahmen ================= */
+  .pix { position: relative; }
+  .pix::before { content: ""; position: absolute; inset: -1px; border-radius: inherit; padding: 1px; background: var(--grad); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none; z-index: 7; opacity: .8; }
+  .pix::after { content: ""; position: absolute; inset: 10% 5% -8%; z-index: -1; background: var(--grad); filter: blur(50px); opacity: .28; pointer-events: none; }
+
+  /* ================= Szenen ================= */
+  .scene { position: relative; overflow: hidden; background: linear-gradient(180deg, var(--sky1, #6fc3ff), var(--sky2, #c9ecff) 70%); isolation: isolate; }
+  .scene .glow { position: absolute; width: 60%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, var(--glow, rgba(255,240,170,.9)), transparent 65%); top: -18%; left: 30%; z-index: -1; }
+  .scene .ground { position: absolute; left: 0; right: 0; bottom: 0; height: 24%; z-index: 0;
+    background: linear-gradient(180deg, var(--top, #6cbf3c) 0 22%, var(--top2, #4f9a2a) 22% 30%, transparent 30%), repeating-linear-gradient(90deg, rgba(0,0,0,.08) 0 24px, transparent 24px 48px), repeating-linear-gradient(180deg, rgba(0,0,0,.07) 0 24px, transparent 24px 48px), linear-gradient(180deg, var(--dirt, #8a5a35), var(--dirt2, #5e3b22)); }
+  .scene::after { content: ""; position: absolute; inset: 0; z-index: 3; pointer-events: none; background: linear-gradient(180deg, transparent 55%, rgba(11,10,20,.55)); }
+  .scene .pillar { position: absolute; bottom: 20%; width: 9%; z-index: 0; background: repeating-linear-gradient(180deg, var(--pc1, #7d5fd1) 0 22px, var(--pc2, #6a4cbf) 22px 44px); box-shadow: inset -8px 0 0 rgba(0,0,0,.18); }
+  .scene .float-item { position: absolute; z-index: 1; filter: drop-shadow(0 0 14px rgba(255,255,255,.5)) drop-shadow(0 8px 10px rgba(0,0,0,.35)); animation: bob 4s ease-in-out infinite; }
+  @keyframes bob { 50% { transform: translateY(-12px) rotate(6deg); } }
+  .scene .char { position: absolute; bottom: 8%; z-index: 2; filter: drop-shadow(0 14px 16px rgba(0,0,0,.4)); }
+  .scene .logo-text { position: absolute; z-index: 4; font-family: var(--font-mc); font-weight: 700; line-height: .9; letter-spacing: .02em; text-transform: uppercase;
+    background: linear-gradient(180deg, #fff7d1 0 45%, #ffcb2f 45% 70%, #ff9a1f 70%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 4px 0 #6a3500) drop-shadow(3px 0 0 #3a1d00) drop-shadow(-3px 0 0 #3a1d00) drop-shadow(0 -3px 0 #3a1d00) drop-shadow(0 8px 10px rgba(0,0,0,.4)); }
+  .scene .logo-text.purple { background: linear-gradient(180deg, #f3e6ff 0 45%, #c08cff 45% 70%, #8a4dff 70%); -webkit-background-clip: text; background-clip: text;
+    filter: drop-shadow(0 4px 0 #2e0f66) drop-shadow(3px 0 0 #1a0838) drop-shadow(-3px 0 0 #1a0838) drop-shadow(0 -3px 0 #1a0838) drop-shadow(0 8px 10px rgba(0,0,0,.4)); }
+  .scene .logo-text.cyan { background: linear-gradient(180deg, #e6fdff 0 45%, #6be6ff 45% 70%, #1fb0e0 70%); -webkit-background-clip: text; background-clip: text;
+    filter: drop-shadow(0 4px 0 #063c55) drop-shadow(3px 0 0 #03263a) drop-shadow(-3px 0 0 #03263a) drop-shadow(0 -3px 0 #03263a) drop-shadow(0 8px 10px rgba(0,0,0,.4)); }
+  .stars { position: absolute; inset: 0; z-index: -1; background-image: radial-gradient(2px 2px at 20% 30%, #fff, transparent), radial-gradient(2px 2px at 70% 20%, #fff, transparent), radial-gradient(1.5px 1.5px at 40% 60%, #fff, transparent), radial-gradient(2px 2px at 85% 55%, #fff, transparent), radial-gradient(1.5px 1.5px at 10% 75%, #fff, transparent), radial-gradient(1.5px 1.5px at 55% 15%, #fff, transparent); opacity: .7; animation: twinkle 4s ease-in-out infinite; }
+  @keyframes twinkle { 50% { opacity: .35; } }
+
+  /* ================= Hero ================= */
+  .hero-bg { position: relative; padding: 56px 0 90px; }
+  .hero-intro { text-align: center; margin: 0 auto 40px; max-width: 760px; }
+  .hero-kicker { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border-radius: 999px; background: var(--card); border: 1px solid var(--line); font-size: 13px; font-weight: 600; color: #ddd6ff; }
+  .hero-kicker b { color: var(--yellow); }
+  .hero-title { font-size: clamp(40px, 8vw, 84px); line-height: .98; font-weight: 800; letter-spacing: -.02em; margin: 18px 0 14px; }
+  .hero-title span { background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 0 30px rgba(255,107,214,.35)); }
+  .hero-lead { color: var(--muted); font-size: clamp(16px, 2.2vw, 19px); margin: 0 auto; max-width: 600px; }
+  .hero { display: grid; grid-template-columns: 1fr 320px; gap: 36px; align-items: end; }
+  .slider { border-radius: 20px; box-shadow: 0 30px 70px rgba(0,0,0,.55); background: #120f22; }
+  .slides { position: relative; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 20px; }
+  .slide { position: absolute; inset: 0; opacity: 0; transform: scale(1.03); transition: opacity .8s ease, transform 1.2s ease; pointer-events: none; }
+  .slide.on { opacity: 1; transform: none; pointer-events: auto; }
+  .slide .scene { position: absolute; inset: 0; }
+  .slide-box { position: absolute; left: 22px; bottom: 22px; z-index: 5; max-width: 340px; background: rgba(15,12,30,.72); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,.12); border-radius: 16px; padding: 18px 20px 20px; box-shadow: 0 16px 34px rgba(0,0,0,.4); }
+  .slide-box h2 { font-weight: 800; font-size: 24px; margin: 0 0 8px; line-height: 1.1; }
+  .slide-box ul { margin: 0 0 14px; padding-left: 18px; font-size: 14px; color: #ddd6ff; }
+  .slide-box li { margin: 3px 0; }
+  .slide-box li::marker { color: var(--pink); }
+  .countdown { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin: 6px 0 14px; }
+  .cd { background: rgba(0,0,0,.35); border: 1px solid rgba(166,107,255,.3); border-radius: 10px; padding: 7px 2px; text-align: center; }
+  .cd b { display: block; font-family: var(--font-mc); font-size: 26px; line-height: 1.05; font-variant-numeric: tabular-nums; background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .cd span { font-size: 9.5px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; font-weight: 700; }
+  .arrow { position: absolute; top: 32%; transform: translateY(-50%); z-index: 6; width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(255,255,255,.2); background: rgba(15,12,30,.55); backdrop-filter: blur(8px); color: #fff; display: grid; place-items: center; cursor: pointer; font-size: 20px; font-weight: 700; transition: background .2s; }
+  .arrow:hover { background: rgba(166,107,255,.6); }
+  .arrow.prev { left: 14px; } .arrow.next { right: 14px; }
+  .dots { position: absolute; right: 16px; bottom: 16px; z-index: 6; display: flex; gap: 6px; background: rgba(15,12,30,.55); backdrop-filter: blur(8px); padding: 7px 10px; border-radius: 999px; }
+  .dots button { width: 7px; height: 7px; border-radius: 999px; border: 0; background: rgba(255,255,255,.45); cursor: pointer; padding: 0; transition: width .3s; }
+  .dots button.on { width: 24px; background: var(--grad); }
+
+  .welcome { position: relative; }
+  .welcome .hero-char { display: block; height: 240px; width: auto; max-width: 100%; object-fit: contain; margin: 0 auto -30px; position: relative; z-index: 1; filter: drop-shadow(0 0 30px rgba(166,107,255,.45)) drop-shadow(0 18px 18px rgba(0,0,0,.5)); animation: wave 3.5s ease-in-out infinite; transform-origin: 50% 100%; }
+  @keyframes wave { 50% { transform: rotate(-2deg) translateY(-6px); } }
+  .welcome-card { position: relative; z-index: 2; background: linear-gradient(180deg, rgba(40,30,75,.85), rgba(20,16,38,.9)); backdrop-filter: blur(14px); border: 1px solid rgba(166,107,255,.3); border-radius: 20px; padding: 28px 22px 22px; text-align: center; box-shadow: 0 20px 44px rgba(0,0,0,.45), 0 0 40px rgba(166,107,255,.15); }
+  .welcome-card h3 { margin: 0 0 10px; font-size: 22px; font-weight: 800; }
+  .welcome-card p { margin: 0 0 16px; font-size: 14.5px; color: #ddd6ff; }
+  .welcome-card .online-now { display: flex; align-items: center; justify-content: center; gap: 10px; margin: -4px 0 16px; padding: 12px; background: rgba(0,0,0,.3); border: 1px solid var(--line); border-radius: 14px; }
+  .online-now b { font-family: var(--font-mc); font-size: 34px; line-height: 1; }
+  .online-now span { font-size: 12px; color: var(--muted); text-align: left; line-height: 1.25; }
+
+  /* ================= Band + News ================= */
+  .band { position: relative; padding: 70px 0 80px; }
+  .band::before { content: ""; position: absolute; inset: 0; z-index: -2; background: linear-gradient(180deg, transparent, rgba(166,107,255,.08) 30%, rgba(166,107,255,.08) 70%, transparent); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .center { text-align: center; }
+  .badge-yellow { display: inline-block; background: rgba(255,211,77,.12); color: var(--yellow); border: 1px solid rgba(255,211,77,.35); font-weight: 700; font-size: 14px; letter-spacing: .08em; text-transform: uppercase; padding: 6px 14px; border-radius: 999px; }
+  .big-h { font-size: clamp(30px, 5vw, 50px); font-weight: 800; letter-spacing: -.01em; margin: 16px 0 6px; line-height: 1.1; }
+  .big-sub { color: var(--muted); margin: 0 0 46px; font-size: 17px; }
+  .sec-title { display: flex; align-items: center; gap: 12px; font-size: clamp(26px, 3.6vw, 34px); font-weight: 800; letter-spacing: -.01em; margin: 0 0 22px; }
+  .sec-title::before { content: ""; width: 6px; height: 30px; background: var(--grad); border-radius: 3px; box-shadow: 0 0 16px rgba(255,107,214,.6); }
+
+  .news { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .about { background: linear-gradient(160deg, rgba(166,107,255,.18), rgba(255,107,214,.06)); border: 1px solid rgba(166,107,255,.3); border-radius: 20px; padding: 24px; }
+  .about h3 { margin: 0 0 12px; font-size: 22px; font-weight: 800; letter-spacing: .04em; }
+  .about p { margin: 0 0 12px; font-size: 14.5px; color: #e4e0f7; }
+  .about .hl { color: var(--yellow); font-weight: 700; }
+  .about .hl2 { color: var(--pink); font-weight: 700; font-style: italic; }
+  .mc-input { margin-top: 16px; background: rgba(0,0,0,.45); border: 1px solid rgba(255,255,255,.15); border-radius: 12px; padding: 11px 14px; font-family: var(--font-mc); font-size: 15px; color: #fff; }
+  .mc-btn { width: 100%; margin-top: 12px; font-family: var(--font-ui); font-weight: 700; font-size: 15px; color: #fff; cursor: pointer; padding: 11px 16px; background: var(--grad); border: 0; border-radius: 12px; box-shadow: 0 8px 22px rgba(255,107,214,.3); transition: transform .2s, box-shadow .2s; }
+  .mc-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(255,107,214,.45); }
+  .ncard { background: var(--card); border: 1px solid var(--line); border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; transition: transform .25s, border-color .25s, box-shadow .25s; }
+  .ncard:hover { transform: translateY(-6px); border-color: rgba(166,107,255,.45); box-shadow: 0 18px 40px rgba(0,0,0,.4), 0 0 30px rgba(166,107,255,.18); }
+  .ncard .scene { height: 160px; flex: none; }
+  .ncard .tags { position: absolute; top: 12px; left: 12px; right: 12px; display: flex; justify-content: space-between; z-index: 6; }
+  .tag-star { background: var(--yellow); color: #3b2a00; font-weight: 700; font-size: 12px; padding: 3px 10px; border-radius: 999px; }
+  .tag-date { background: rgba(15,12,30,.7); backdrop-filter: blur(6px); color: #fff; font-weight: 600; font-size: 12px; padding: 3px 10px; border-radius: 999px; margin-left: auto; border: 1px solid rgba(255,255,255,.15); }
+  .ncard .body { padding: 16px 18px 18px; display: flex; flex-direction: column; flex: 1; }
+  .ncard h4 { margin: 0 0 8px; font-size: 18px; font-weight: 700; }
+  .ncard ul { margin: 0 0 12px; padding-left: 18px; font-size: 13.5px; color: #cfc9e8; flex: 1; }
+  .ncard li::marker { color: var(--purple); }
+  .more { color: var(--cyan); font-weight: 700; font-size: 13.5px; }
+  .more:hover { text-decoration: underline; }
+
+  /* ================= Abschnitte ================= */
+  section { padding-top: 90px; }
+  .cat { display: inline-block; background: rgba(166,107,255,.15); color: #d9c6ff; border: 1px solid rgba(166,107,255,.35); font-weight: 700; font-size: 12.5px; letter-spacing: .08em; text-transform: uppercase; padding: 5px 12px; border-radius: 999px; margin: 0 0 16px; }
+  .lead { color: var(--muted); margin: -8px 0 24px; max-width: 660px; font-size: 16px; }
+
+  /* Live */
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 22px; }
+  .stat { position: relative; background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 16px 18px; overflow: hidden; }
+  .stat::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: var(--line); }
+  .stat .k { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .08em; font-weight: 700; }
+  .stat .v { font-family: var(--font-mc); font-size: 34px; font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1.2; }
+  .stat .s { color: var(--muted); font-size: 12px; }
+  .stat.good::after { background: linear-gradient(90deg, #4ade80, #5ee7ff); } .stat.mid::after { background: #f2b45c; } .stat.low::after { background: var(--red); }
+  .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 14px; }
+  .tile { position: relative; height: 245px; border-radius: 18px; overflow: hidden; border: 1px solid rgba(255,255,255,.1); transition: transform .25s, box-shadow .25s; background: radial-gradient(circle at 50% 30%, var(--t1, #5b8fd6), var(--t2, #2d3f63) 75%); }
+  .tile:hover { transform: translateY(-6px); box-shadow: 0 16px 34px rgba(0,0,0,.45); }
+  .tile .render { position: absolute; left: 50%; top: 16px; height: 180px; transform: translateX(-50%); filter: drop-shadow(0 10px 10px rgba(0,0,0,.4)); transition: transform .3s; }
+  .tile:hover .render { transform: translateX(-50%) scale(1.05); }
+  .tile .shade { position: absolute; inset: auto 0 0 0; height: 110px; background: linear-gradient(transparent, rgba(8,6,16,.9)); }
+  .tile .tname { position: absolute; left: 0; right: 0; bottom: 30px; text-align: center; font-family: var(--font-mc); font-size: 21px; font-weight: 600; text-shadow: 0 2px 8px rgba(0,0,0,.7); padding: 0 6px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .tile .tmeta { position: absolute; left: 0; right: 0; bottom: 9px; display: flex; justify-content: center; gap: 6px; font-size: 11px; }
+  .rank { padding: 1px 8px; border-radius: 999px; font-weight: 700; background: rgba(0,0,0,.55); }
+  .ping { color: #dfe3e7; background: rgba(0,0,0,.55); padding: 1px 8px; border-radius: 999px; }
+  .badge-bedrock { position: absolute; top: 10px; left: 10px; background: #14b8a6; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 999px; text-transform: uppercase; z-index: 2; }
+  .empty { grid-column: 1 / -1; background: var(--card); border: 1px dashed rgba(255,255,255,.15); border-radius: 18px; padding: 34px; text-align: center; color: var(--muted); }
+  .live-row { display: grid; grid-template-columns: 1.3fr 1fr; gap: 14px; margin-top: 18px; }
+  .panel { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 16px 18px; }
+  .panel h4 { margin: 0 0 10px; font-size: 15px; display: flex; justify-content: space-between; }
+  .panel h4 span { color: var(--muted); font-weight: 400; }
+  .panel svg { width: 100%; height: 140px; display: block; }
+  .axis { display: flex; justify-content: space-between; color: var(--muted); font-size: 11px; }
+  .feed { max-height: 190px; overflow-y: auto; margin: 0 -6px; scrollbar-width: thin; scrollbar-color: rgba(166,107,255,.4) transparent; }
+  .ev { display: flex; gap: 10px; align-items: flex-start; padding: 6px; border-radius: 8px; font-size: 13.5px; animation: slidein .3s ease-out; }
+  .ev:nth-child(odd) { background: rgba(255,255,255,.025); }
+  @keyframes slidein { from { opacity: 0; transform: translateX(-8px); } }
+  .ev .ico { width: 22px; height: 22px; flex: none; border-radius: 7px; display: grid; place-items: center; font-size: 11px; font-weight: 700; }
+  .ev .txt { flex: 1; word-break: break-word; }
+  .ev time { color: var(--muted); font-size: 11.5px; flex: none; font-variant-numeric: tabular-nums; }
+  .t-join .ico { background: rgba(74,222,128,.18); color: var(--green); }
+  .t-quit .ico { background: rgba(255,255,255,.08); color: var(--muted); }
+  .t-death .ico, .t-kill .ico { background: rgba(255,107,122,.18); color: var(--red); }
+  .t-kauf .ico { background: rgba(255,211,77,.18); color: var(--yellow); }
+  .t-chat .ico { background: rgba(166,107,255,.2); color: var(--purple); }
+  .t-anticheat .ico, .t-kick .ico { background: rgba(255,107,122,.18); color: var(--red); }
+  .t-befehl .ico { background: rgba(94,231,255,.16); color: var(--cyan); }
+  .t-warnung .ico, .t-chatfilter .ico { background: rgba(242,180,92,.2); color: #f2b45c; }
+
+  /* Spielmodi */
+  .highlight { border-radius: 24px; position: relative; aspect-ratio: 21 / 8; }
+  .highlight .scene { position: absolute; inset: 0; border-radius: 24px; }
+  .modes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .mode .tname { bottom: 18px; font-size: 22px; }
+  .mode .msub { position: absolute; left: 0; right: 0; bottom: 4px; text-align: center; font-size: 11.5px; color: #ddd6ff; opacity: 0; transform: translateY(4px); transition: opacity .2s, transform .2s; }
+  .mode:hover .msub { opacity: 1; transform: none; }
+  .mode .icon { position: absolute; top: 12px; right: 12px; width: 30px; height: 30px; z-index: 2; filter: drop-shadow(0 0 8px rgba(255,255,255,.5)); }
+
+  /* Joinen */
+  .join-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .join-card { position: relative; background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 26px; overflow: hidden; }
+  .join-card::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 4px; background: linear-gradient(90deg, #4ade80, #5ee7ff); }
+  .join-card.bedrock::before { background: linear-gradient(90deg, #14b8a6, #a66bff); }
+  .join-card h3 { margin: 0; font-size: 22px; font-weight: 800; }
+  .join-card .sub { color: var(--muted); font-size: 13.5px; margin-bottom: 16px; }
+  .steps { list-style: none; counter-reset: s; margin: 0 0 18px; padding: 0; }
+  .steps li { counter-increment: s; position: relative; padding: 0 0 14px 44px; }
+  .steps li::before { content: counter(s); position: absolute; left: 0; top: 0; width: 30px; height: 30px; display: grid; place-items: center; background: var(--grad); color: #fff; border-radius: 10px; font-family: var(--font-mc); font-size: 15px; box-shadow: 0 4px 12px rgba(255,107,214,.3); }
+  .steps b { display: block; } .steps span { color: var(--muted); font-size: 14px; }
+  .addr { display: flex; align-items: center; gap: 10px; background: rgba(0,0,0,.45); border: 1px solid rgba(255,255,255,.14); border-radius: 14px; padding: 10px 10px 10px 14px; font-family: var(--font-mc); font-size: 15px; }
+  .addr span { flex: 1; overflow-wrap: anywhere; }
+  .addr button { background: linear-gradient(135deg, #4ade80, #22c55e); color: #062b14; border: 0; border-radius: 10px; font-weight: 700; font-size: 12.5px; padding: 8px 12px; cursor: pointer; flex: none; font-family: var(--font-ui); }
+
+  /* Raenge */
+  .ranks { display: grid; grid-template-columns: 1fr 1fr 1.1fr; gap: 18px; }
+  .rank-card { position: relative; background: var(--card); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: flex; flex-direction: column; transition: transform .25s, box-shadow .25s; }
+  .rank-card:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(0,0,0,.4); }
+  .rank-card:nth-child(2) { border-color: rgba(255,211,77,.45); box-shadow: 0 0 40px rgba(255,180,60,.12); }
+  .rank-card .scene { height: 130px; flex: none; }
+  .rank-card .rbody { padding: 18px 20px 20px; display: flex; flex-direction: column; flex: 1; }
+  .rank-name { font-family: var(--font-mc); font-size: 32px; font-weight: 700; line-height: 1; }
+  .price { margin: 8px 0 12px; font-size: 13px; color: var(--muted); }
+  .price b { font-family: var(--font-mc); font-size: 26px; color: var(--yellow); }
+  .perks { list-style: none; margin: 0 0 16px; padding: 0; flex: 1; }
+  .perks li { padding: 6px 0 6px 26px; position: relative; font-size: 14px; border-bottom: 1px solid rgba(255,255,255,.05); }
+  .perks li::before { content: "✦"; position: absolute; left: 2px; color: var(--pink); }
+  .hot-ribbon { position: absolute; top: 14px; right: -34px; transform: rotate(35deg); background: var(--grad); color: #fff; font-weight: 800; font-size: 11px; letter-spacing: .08em; padding: 4px 40px; z-index: 6; box-shadow: 0 2px 10px rgba(0,0,0,.35); }
+  .team-list { display: flex; flex-direction: column; gap: 8px; }
+  .team-list div { display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,.25); border: 1px solid var(--line); border-radius: 12px; padding: 9px 14px; font-size: 14px; }
+  .team-list b { font-family: var(--font-mc); font-size: 17px; }
+  code { background: rgba(166,107,255,.15); color: #e4d8ff; padding: 1px 6px; border-radius: 6px; font-size: 13px; }
+
+  /* Regeln + FAQ */
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .rules { list-style: none; margin: 0; padding: 0; counter-reset: r; }
+  .rules li { counter-increment: r; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 13px 16px 13px 56px; margin-bottom: 9px; position: relative; font-size: 14.5px; }
+  .rules li::before { content: "§" counter(r); position: absolute; left: 16px; top: 12px; font-family: var(--font-mc); font-size: 18px; color: var(--pink); }
+  details { background: var(--card); border: 1px solid var(--line); border-radius: 14px; margin-bottom: 9px; transition: border-color .2s; }
+  details[open] { border-color: rgba(166,107,255,.4); }
+  summary { cursor: pointer; padding: 13px 16px; font-weight: 700; font-size: 14.5px; list-style: none; display: flex; justify-content: space-between; gap: 10px; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; color: var(--pink); font-size: 22px; line-height: 1; font-weight: 700; transition: transform .2s; }
+  details[open] summary::after { transform: rotate(45deg); }
+  details p { margin: 0; padding: 0 16px 15px; color: #cfc9e8; font-size: 14.5px; }
+
+  /* Abschluss */
+  .cta { margin-top: 100px; border-radius: 28px; position: relative; min-height: 300px; display: grid; place-items: center; text-align: center; }
+  .cta .scene { position: absolute; inset: 0; border-radius: 28px; }
+  .cta-box { position: relative; z-index: 5; background: rgba(15,12,30,.72); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,.14); border-radius: 22px; padding: 26px 30px; margin: 34px 16px; max-width: 560px; }
+  .cta-box h2 { font-weight: 800; font-size: clamp(28px, 4.5vw, 40px); margin: 0 0 6px; }
+  .cta-box p { margin: 0 0 16px; color: #ddd6ff; }
+  .cta-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .cta-btns .mc-btn { width: auto; margin: 0; font-size: 14px; }
+  .cta-btns .mc-btn:last-child { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.2); box-shadow: none; }
+
+  /* Admin */
+  #admin { display: none; }
+  .admin-box { border: 1px dashed rgba(74,222,128,.4); border-radius: 18px; padding: 18px; background: rgba(74,222,128,.04); }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+  .chip { background: var(--card); border: 1px solid var(--line); color: var(--fg); border-radius: 999px; padding: 5px 13px; font-size: 12px; font-weight: 700; cursor: pointer; }
+  .chip.on { background: var(--grad); border-color: transparent; }
+  .admin-box .feed { max-height: 460px; font-family: ui-monospace, Consolas, monospace; font-size: 12.5px; margin: 0; }
+
+  footer { margin-top: 110px; background: rgba(0,0,0,.35); border-top: 1px solid var(--line); position: relative; }
+  footer::before { content: ""; position: absolute; left: 0; right: 0; top: -1px; height: 2px; background: var(--grad); opacity: .8; }
+  .foot { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 30px; padding: 40px 16px 24px; }
+  .foot h5 { margin: 0 0 12px; font-size: 12.5px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); }
+  .foot a, .foot p { display: block; color: #cfc9e8; font-size: 14px; margin: 0 0 7px; }
+  .foot a:hover { color: #fff; }
+  .legal { text-align: center; color: #6f6a8a; font-size: 12px; padding: 16px 16px 28px; border-top: 1px solid var(--line); }
+
+  .toast { position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%) translateY(90px); background: rgba(20,16,38,.92); backdrop-filter: blur(10px); border: 1px solid rgba(166,107,255,.45); color: #fff; font-weight: 600; padding: 11px 18px; border-radius: 999px; transition: transform .3s cubic-bezier(.2,.9,.3,1.3); z-index: 60; max-width: calc(100% - 32px); box-shadow: 0 10px 30px rgba(0,0,0,.4); }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+
+  /* ================= Neu: Launch, Karte, Ranglisten, Profil, Team ================= */
+  .row-btns { display: flex; gap: 8px; flex-wrap: wrap; }
+  .btn-ghost { background: rgba(255,255,255,.08); color: #fff; font-weight: 700; font-size: 13px; border: 1px solid rgba(255,255,255,.2); border-radius: 999px; padding: 8px 14px; cursor: pointer; transition: background .2s; }
+  .btn-ghost:hover { background: rgba(255,255,255,.16); }
+  .launch-banner { position: sticky; top: 112px; z-index: 25; margin: 12px auto 0; width: fit-content; max-width: calc(100% - 32px); display: flex; gap: 8px; align-items: center; padding: 9px 18px; border-radius: 999px; background: var(--grad); color: #fff; font-size: 14px; box-shadow: 0 10px 30px rgba(255,107,214,.4); animation: pop .6s cubic-bezier(.2,.9,.3,1.4); }
+  .launch-banner a { font-weight: 800; text-decoration: underline; }
+  @keyframes pop { from { transform: scale(.6); opacity: 0; } }
+  .launch-banner[hidden] { display: none; }
+  #confetti { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 70; display: none; }
+
+  .map-box { position: relative; height: min(70vh, 620px); border-radius: 22px; overflow: hidden; border: 1px solid var(--line); background: #0d0b1a; box-shadow: 0 20px 50px rgba(0,0,0,.4); }
+  .map-box iframe { width: 100%; height: 100%; border: 0; display: block; }
+  .map-off { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; padding: 20px; background: radial-gradient(circle at 50% 40%, rgba(166,107,255,.18), transparent 60%), repeating-linear-gradient(0deg, rgba(255,255,255,.03) 0 1px, transparent 1px 32px), repeating-linear-gradient(90deg, rgba(255,255,255,.03) 0 1px, transparent 1px 32px); }
+  .map-off b { display: block; font-size: 20px; margin-bottom: 6px; }
+  .map-off span { color: var(--muted); }
+  .map-full { position: absolute; top: 12px; left: 12px; z-index: 2; background: rgba(15,12,30,.75); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,.18); padding: 6px 12px; border-radius: 999px; font-size: 13px; font-weight: 700; }
+
+  .lb-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 16px; align-items: start; }
+  .tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+  .tabs button { background: rgba(255,255,255,.05); border: 1px solid var(--line); color: #cfc9e8; border-radius: 999px; padding: 6px 13px; font-weight: 700; font-size: 13px; cursor: pointer; }
+  .tabs button.on { background: var(--grad); color: #fff; border-color: transparent; }
+  .lb-list { list-style: none; margin: 0; padding: 0; counter-reset: lb; }
+  .lb-list li { counter-increment: lb; display: flex; align-items: center; gap: 12px; padding: 8px 10px; border-radius: 12px; cursor: pointer; transition: background .15s; }
+  .lb-list li:hover { background: rgba(255,255,255,.05); }
+  .lb-list li::before { content: counter(lb); width: 26px; text-align: center; font-family: var(--font-mc); font-size: 18px; color: var(--muted); }
+  .lb-list li:nth-child(1)::before { content: "🥇"; } .lb-list li:nth-child(2)::before { content: "🥈"; } .lb-list li:nth-child(3)::before { content: "🥉"; }
+  .lb-list img { width: 32px; height: 32px; border-radius: 7px; }
+  .lb-list .n { flex: 1; font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .lb-list .v { font-family: var(--font-mc); font-size: 18px; color: var(--yellow); }
+  .lb-list .lb-empty { cursor: default; color: var(--muted); justify-content: center; }
+  .lb-list .lb-empty::before { content: none; }
+  .search { display: flex; gap: 8px; margin-bottom: 14px; }
+  .search input { flex: 1; min-width: 0; background: rgba(0,0,0,.4); border: 1px solid rgba(255,255,255,.15); border-radius: 999px; padding: 9px 16px; color: #fff; font: inherit; }
+  .search input:focus { outline: 2px solid rgba(166,107,255,.6); }
+  .prof-empty { color: var(--muted); text-align: center; padding: 30px 10px; }
+  .prof { display: grid; grid-template-columns: 130px 1fr; gap: 16px; align-items: center; }
+  .prof img { width: 130px; height: 200px; object-fit: contain; filter: drop-shadow(0 0 20px rgba(166,107,255,.4)); }
+  .prof h3 { margin: 0; font-size: 24px; font-weight: 800; }
+  .prof .meta { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+  .prof .on-pill { display: inline-block; font-size: 11px; font-weight: 800; padding: 2px 9px; border-radius: 999px; background: rgba(74,222,128,.18); color: var(--green); margin-left: 6px; vertical-align: middle; }
+  .kv { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .kv div { background: rgba(0,0,0,.28); border: 1px solid var(--line); border-radius: 12px; padding: 8px 10px; }
+  .kv b { display: block; font-family: var(--font-mc); font-size: 20px; }
+  .kv span { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; font-weight: 700; }
+
+  .team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 14px; }
+  .member { position: relative; background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 14px 10px 14px; text-align: center; transition: transform .25s, box-shadow .25s; }
+  .member:hover { transform: translateY(-5px); box-shadow: 0 14px 30px rgba(0,0,0,.4); }
+  .member img { height: 120px; filter: drop-shadow(0 8px 10px rgba(0,0,0,.4)); }
+  .member b { display: block; margin-top: 6px; font-size: 16px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .member span { display: inline-block; margin-top: 4px; font-size: 12px; font-weight: 800; padding: 2px 10px; border-radius: 999px; background: rgba(0,0,0,.4); }
+  .discord { margin-top: 18px; display: flex; align-items: center; gap: 16px; padding: 18px 22px; border-radius: 22px; background: linear-gradient(120deg, #5865f2, #7a5cff); box-shadow: 0 16px 40px rgba(88,101,242,.35); transition: transform .2s; }
+  .discord:hover { transform: translateY(-3px); }
+  .discord svg { width: 46px; height: 46px; flex: none; }
+  .discord b { display: block; font-size: 19px; }
+  .discord span { opacity: .85; font-size: 14px; }
+  .discord div { flex: 1; }
+  .discord-btn { background: #fff; color: #3b3fbf !important; opacity: 1 !important; font-weight: 800; padding: 9px 16px; border-radius: 999px; flex: none; }
+  @media (max-width: 960px) { .lb-grid { grid-template-columns: 1fr; } .launch-banner { top: 74px; } }
+  @media (max-width: 600px) { .prof { grid-template-columns: 1fr; text-align: center; } .prof img { margin: 0 auto; } .kv { grid-template-columns: repeat(2, 1fr); } .discord-btn { display: none; } .map-box { height: 60vh; } }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } .reveal { opacity: 1; transform: none; } }
+
+  @media (max-width: 1100px) { nav a svg { display: none; } }
+  @media (max-width: 960px) {
+    nav a { display: none; }
+    .hero { grid-template-columns: 1fr; gap: 10px; }
+    .welcome .hero-char { height: 170px; }
+    .news { grid-template-columns: 1fr 1fr; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .modes { grid-template-columns: repeat(2, 1fr); }
+    .live-row, .join-grid, .two, .ranks { grid-template-columns: 1fr; }
+    .foot { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 600px) {
+    .brand-sub, .sub-link, .hide-s, .subbar .btn-green { display: none; }
+    .online-label { white-space: nowrap; }
+    .btn-white .long { display: none; }
+    .news { grid-template-columns: 1fr; }
+    .slides { aspect-ratio: 4 / 5; }
+    .slide-box { left: 12px; right: 12px; bottom: 12px; max-width: none; }
+    .arrow { top: 28%; }
+    .dots { top: 12px; bottom: auto; }
+    .highlight { aspect-ratio: 4 / 3; }
+    .foot { grid-template-columns: 1fr; }
+    .hero-bg { padding-top: 36px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap topbar">
+    <a class="brand" href="#start">
+      <div class="shield"><span><img src="img/end_crystal.png" alt=""></span></div>
+      <div>
+        <div class="brand-name">CRYSTALSMP</div>
+        <div class="brand-sub">Jetzt Spielen: <b>▷ <span class="java-addr up">CRYSTALSMP-MC.DNS.NAVY</span></b></div>
+      </div>
+    </a>
+    <nav>
+      <a href="#start" class="on"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Startseite</a>
+      <a href="#spielmodi"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="12" rx="3"/><path d="M7 11v4M5 13h4M15 12h.01M18 14h.01"/></svg>Spielmodi</a>
+      <a href="#live"><svg viewBox="0 0 24 24"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg>Live</a>
+      <a href="#karte"><svg viewBox="0 0 24 24"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14M15 6v14"/></svg>Karte</a>
+      <a href="#ranglisten"><svg viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></svg>Top</a>
+      <a href="#joinen"><svg viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3"/></svg>Joinen</a>
+      <a href="#regeln"><svg viewBox="0 0 24 24"><path d="M4 4h12l4 4v12H4z"/><path d="M8 12h8M8 16h5"/></svg>Regeln</a>
+    </nav>
+    <a class="btn-white" href="#raenge"><svg viewBox="0 0 24 24"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l3 12h11l2-8H6"/></svg><span><span class="long">Rang-</span>Shop</span></a>
+  </div>
+  <div class="wrap subbar">
+    <span class="online-label">SPIELER ONLINE</span>
+    <div class="digits" id="digits"><span>0</span><span>0</span><span>0</span><span>0</span></div>
+    <div class="sub-right">
+      <span class="live"><span class="dot" id="liveDot"></span><span id="liveText">verbinde…</span></span>
+      <a class="sub-link" href="#joinen">So joinst du</a>
+      <button class="btn-green" data-copy="java" type="button">IP kopieren</button>
+    </div>
+  </div>
+</header>
+
+<!-- ================= Hero: Slider + Begruessung ================= -->
+<div class="launch-banner" id="launchBanner" hidden><span>🎉</span> <b id="launchBannerText">Heute ist Launch!</b> <a href="#joinen">Jetzt joinen →</a></div>
+<canvas id="confetti" aria-hidden="true"></canvas>
+<div class="hero-bg" id="start">
+  <div class="wrap hero-intro reveal">
+    <span class="hero-kicker">💎 Java &amp; Bedrock · Launch am <b>03.11.2026 · 16:30 Uhr</b></span>
+    <h1 class="hero-title">Willkommen auf<br><span>CrystalSMP</span></h1>
+    <p class="hero-lead">Survival, Crystal-PvP, Duelle mit Elo, Clans und Bedwars – alles auf einem Server, fair dank eigenem Anticheat.</p>
+  </div>
+  <div class="wrap hero">
+    <div class="slider pix">
+      <div class="slides" id="slides">
+
+        <!-- Slide 1: Launch -->
+        <div class="slide on">
+          <div class="scene" style="--sky1:#2a1758;--sky2:#7b3fd0;--glow:rgba(255,190,255,.7);--top:#7a5bd6;--top2:#5b3fb5;--dirt:#3b2a63;--dirt2:#21163d">
+            <div class="stars"></div><div class="glow"></div><div class="ground"></div>
+            <div class="pillar" style="left:6%;height:44%"></div><div class="pillar" style="left:84%;height:56%"></div>
+            <img class="float-item" src="img/end_crystal.png" alt="" style="left:8%;top:12%;width:9%">
+            <img class="float-item" src="img/amethyst_shard.png" alt="" style="right:20%;top:8%;width:7%;animation-delay:-1.5s">
+            <div class="logo-text" style="left:36%;top:6%;font-size:clamp(34px,7vw,70px)">CRYSTAL<br>SMP</div>
+            <img class="char render" data-skin="Maxushky" data-pose="yaw=-28&arms=55" alt="" style="right:30%;height:78%">
+            <img class="char render" data-skin="MHF_Alex" data-pose="yaw=30&arms=20" alt="" style="right:6%;height:62%">
+          </div>
+          <div class="slide-box">
+            <h2>Launch am 03.11. · 16:30</h2>
+            <div class="countdown">
+              <div class="cd"><b id="cdD">–</b><span>Tage</span></div><div class="cd"><b id="cdH">–</b><span>Std</span></div>
+              <div class="cd"><b id="cdM">–</b><span>Min</span></div><div class="cd"><b id="cdS">–</b><span>Sek</span></div>
+            </div>
+            <div class="row-btns"><button class="btn-green" data-copy="java" type="button">Server-IP kopieren</button><button class="btn-ghost" data-ics type="button">📅 Erinnerung</button></div>
+          </div>
+        </div>
+
+        <!-- Slide 2: Crystal-PvP -->
+        <div class="slide">
+          <div class="scene" style="--sky1:#ff7a3d;--sky2:#ffd27a;--glow:rgba(255,255,200,.9);--top:#6cbf3c;--top2:#4f9a2a">
+            <div class="glow" style="left:10%"></div><div class="ground"></div>
+            <img class="float-item" src="img/end_crystal.png" alt="" style="left:44%;top:16%;width:11%">
+            <img class="float-item" src="img/totem_of_undying.png" alt="" style="left:6%;top:14%;width:8%;animation-delay:-2s">
+            <div class="logo-text" style="left:4%;top:42%;font-size:clamp(28px,6vw,60px)">CRYSTAL<br>PVP</div>
+            <img class="char render" data-skin="MHF_Steve" data-pose="yaw=35&arms=70" alt="" style="right:28%;height:74%">
+            <img class="char render" data-skin="Maxushky" data-pose="yaw=-40&arms=10" alt="" style="right:4%;height:70%">
+          </div>
+          <div class="slide-box">
+            <h2>Crystal-PvP &amp; Duelle</h2>
+            <ul><li>Endkristalle, Anker &amp; Totems</li><li><code>/duel</code> mit Elo-Rangliste</li><li>Kopfgeld &amp; Killstreaks</li></ul>
+            <a class="btn-green" href="#spielmodi">Weiterlesen</a>
+          </div>
+        </div>
+
+        <!-- Slide 3: Clans -->
+        <div class="slide">
+          <div class="scene" style="--sky1:#1e6fbf;--sky2:#8fd3ff;--top:#6cbf3c;--top2:#4f9a2a">
+            <div class="glow" style="left:55%"></div><div class="ground"></div>
+            <div class="pillar" style="left:3%;height:36%;--pc1:#c9c9c9;--pc2:#adadad"></div>
+            <img class="float-item" src="img/crafting_table.png" alt="" style="left:15%;top:16%;width:8%">
+            <img class="float-item" src="img/diamond.png" alt="" style="left:30%;top:9%;width:7%;animation-delay:-1s">
+            <div class="logo-text cyan" style="right:5%;top:12%;font-size:clamp(30px,6.5vw,64px);text-align:right">CLANS</div>
+            <img class="char render" data-skin="MHF_Alex" data-pose="yaw=20&arms=40" alt="" style="left:18%;height:70%">
+            <img class="char render" data-skin="Maxushky" data-pose="yaw=-15&arms=30" alt="" style="left:38%;height:76%">
+            <img class="char render" data-skin="MHF_Steve" data-pose="yaw=-35&arms=15" alt="" style="left:58%;height:68%">
+          </div>
+          <div class="slide-box">
+            <h2>Gründe deinen Clan</h2>
+            <ul><li>Clan-Tag im Chat</li><li>Eigener Clan-Chat <code>/cc</code></li><li>Kein Friendly Fire</li></ul>
+            <a class="btn-green" href="#spielmodi">Weiterlesen</a>
+          </div>
+        </div>
+
+        <!-- Slide 4: Raenge -->
+        <div class="slide">
+          <div class="scene" style="--sky1:#3b2a00;--sky2:#c98a12;--glow:rgba(255,230,120,.9);--top:#ffcb2f;--top2:#d99a00;--dirt:#7a5410;--dirt2:#4a3208">
+            <div class="glow" style="left:20%"></div><div class="ground"></div>
+            <img class="float-item" src="img/totem_of_undying.png" alt="" style="left:10%;top:14%;width:10%">
+            <img class="float-item" src="img/diamond.png" alt="" style="left:28%;top:30%;width:7%;animation-delay:-2.5s">
+            <div class="logo-text" style="left:5%;top:52%;font-size:clamp(30px,6.5vw,64px)">VIP+</div>
+            <img class="char render" data-skin="Maxushky" data-pose="yaw=-20&arms=80" alt="" style="right:10%;height:80%">
+          </div>
+          <div class="slide-box">
+            <h2>Ränge ohne Echtgeld</h2>
+            <ul><li>VIP &amp; VIP+ mit Ingame-Geld</li><li>Farbiger Chat, Homes, <code>/nick</code></li><li>Kaufen mit <code>/rangshop</code></li></ul>
+            <a class="btn-green" href="#raenge">Zu den Rängen</a>
+          </div>
+        </div>
+
+        <button class="arrow prev" id="prev" type="button" aria-label="Zurück">‹</button>
+        <button class="arrow next" id="next" type="button" aria-label="Weiter">›</button>
+        <div class="dots" id="dots"></div>
+      </div>
+    </div>
+
+    <div class="welcome">
+      <img class="hero-char render" data-skin="Maxushky" data-pose="yaw=-28&arms=60&pitch=4" alt="">
+      <div class="welcome-card">
+        <h3>Heyho Minecraftfreund! 👋</h3>
+        <p>Willkommen auf CrystalSMP – Survival, Crystal-PvP, Clans und Duelle für Java und Bedrock. Am <b style="color:var(--yellow)">3. November 2026 um 16:30 Uhr</b> ist großer Launch!</p>
+        <div class="online-now"><span class="dot" id="heroDot"></span><b id="heroCount">–</b><span>Spieler<br><span id="heroState">verbinde…</span></span></div>
+        <a class="btn-green" href="#joinen">Wie kann ich spielen?</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= Band: Dein #1 + News ================= -->
+<div class="band">
+  <div class="wrap">
+    <div class="center">
+      <span class="badge-yellow">Dein #1 Crystal-SMP</span>
+      <div class="big-h">Community. Abenteuer. Kristalle.</div>
+      <p class="big-sub">News &amp; Updates – Aktuelles aus der CrystalSMP-Welt</p>
+    </div>
+    <div class="sec-title">Aktuelle Neuigkeiten</div>
+    <div class="news reveal">
+      <div class="about">
+        <h3>ÜBER UNS</h3>
+        <p>Joine jetzt auf CrystalSMP für ein <span class="hl">echtes Survival-Erlebnis</span>, eine <span class="hl">faire Community</span> und <span class="hl">jede Menge Crystal-PvP</span> – auf Java und Bedrock gleichzeitig!</p>
+        <p>Bei uns findest du <span class="hl">Duelle</span> mit Elo, <span class="hl">Clans</span>, <span class="hl">Kopfgeld</span>, <span class="hl">Bedwars</span> und ein eigenes <span class="hl2">Anticheat</span> für faire Kämpfe.</p>
+        <p>Probier es doch direkt mal aus!</p>
+        <div class="mc-input java-addr">crystalsmp-mc.dns.navy</div>
+        <button class="mc-btn" data-copy="java" type="button">Server beitreten</button>
+      </div>
+
+      <article class="ncard">
+        <div class="scene" style="--sky1:#2a1758;--sky2:#7b3fd0;--glow:rgba(255,190,255,.7);--top:#7a5bd6;--top2:#5b3fb5;--dirt:#3b2a63;--dirt2:#21163d">
+          <div class="stars"></div><div class="glow"></div><div class="ground"></div>
+          <div class="tags"><span class="tag-star">★ Empfohlen</span><span class="tag-date">03.11. · 16:30</span></div>
+          <div class="logo-text" style="left:8%;top:30%;font-size:34px">LAUNCH</div>
+          <img class="char render" data-skin="Maxushky" data-pose="yaw=-30&arms=120" alt="" style="right:8%;height:82%">
+        </div>
+        <div class="body">
+          <h4>Großer Server-Launch</h4>
+          <ul><li>Offizieller Start am 3. November um 16:30 Uhr</li><li>Neue Welt für alle</li><li>Java &amp; Bedrock zusammen</li></ul>
+          <a class="more" href="#start">Weiterlesen →</a>
+        </div>
+      </article>
+
+      <article class="ncard">
+        <div class="scene" style="--sky1:#ff7a3d;--sky2:#ffd27a;--glow:rgba(255,255,200,.9)">
+          <div class="glow"></div><div class="ground"></div>
+          <div class="tags"><span class="tag-star">★ Empfohlen</span><span class="tag-date">24.10.2026</span></div>
+          <div class="logo-text" style="left:7%;top:30%;font-size:32px">DUELS</div>
+          <img class="char render" data-skin="MHF_Steve" data-pose="yaw=30&arms=70" alt="" style="right:30%;height:74%">
+          <img class="char render" data-skin="MHF_Alex" data-pose="yaw=-35&arms=60" alt="" style="right:6%;height:74%">
+        </div>
+        <div class="body">
+          <h4>Duelle, Kopfgeld &amp; Stats</h4>
+          <ul><li><code>/duel</code> mit Elo und Arena-Reset</li><li><code>/bounty</code> auf deine Gegner</li><li>Killstreaks und <code>/stats</code></li></ul>
+          <a class="more" href="#spielmodi">Weiterlesen →</a>
+        </div>
+      </article>
+
+      <article class="ncard">
+        <div class="scene" style="--sky1:#3b2a00;--sky2:#c98a12;--glow:rgba(255,230,120,.9);--top:#ffcb2f;--top2:#d99a00;--dirt:#7a5410;--dirt2:#4a3208">
+          <div class="glow"></div><div class="ground"></div>
+          <div class="tags"><span class="tag-date">25.10.2026</span></div>
+          <div class="logo-text" style="left:7%;top:30%;font-size:30px">RANG<br>SHOP</div>
+          <img class="char render" data-skin="Maxushky" data-pose="yaw=-20&arms=80" alt="" style="right:10%;height:80%">
+        </div>
+        <div class="body">
+          <h4>Rang-Shop ist da</h4>
+          <ul><li>VIP &amp; VIP+ mit Ingame-Geld</li><li>Upgrade-Rabatt</li><li>Öffnen mit <code>/rangshop</code></li></ul>
+          <a class="more" href="#raenge">Weiterlesen →</a>
+        </div>
+      </article>
+
+      <article class="ncard">
+        <div class="scene" style="--sky1:#1e6fbf;--sky2:#8fd3ff">
+          <div class="glow" style="left:50%"></div><div class="ground"></div>
+          <div class="tags"><span class="tag-date">24.10.2026</span></div>
+          <div class="logo-text cyan" style="left:7%;top:30%;font-size:32px">CLANS</div>
+          <img class="char render" data-skin="MHF_Alex" data-pose="yaw=20&arms=40" alt="" style="right:28%;height:72%">
+          <img class="char render" data-skin="Maxushky" data-pose="yaw=-25&arms=30" alt="" style="right:6%;height:76%">
+        </div>
+        <div class="body">
+          <h4>Clans &amp; tägliche Belohnungen</h4>
+          <ul><li><code>/clan</code> mit Tag im Chat</li><li><code>/daily</code> mit Serien-Bonus</li><li>Ranglisten-Hologramme am Spawn</li></ul>
+          <a class="more" href="#spielmodi">Weiterlesen →</a>
+        </div>
+      </article>
+
+      <article class="ncard">
+        <div class="scene" style="--sky1:#0f3d2e;--sky2:#2fa36e;--glow:rgba(170,255,200,.7);--top:#3fbf6a;--top2:#2a8f4a">
+          <div class="glow"></div><div class="ground"></div>
+          <div class="tags"><span class="tag-date">25.10.2026</span></div>
+          <div class="logo-text" style="left:7%;top:30%;font-size:30px">LIVE</div>
+          <img class="char render" data-skin="MHF_Steve" data-pose="yaw=-30&arms=25" alt="" style="right:10%;height:78%">
+        </div>
+        <div class="body">
+          <h4>Website mit Live-Status</h4>
+          <ul><li>Sieh, wer gerade online ist</li><li>Live-Feed mit Joins &amp; Kills</li><li>Faires Spiel dank Anticheat</li></ul>
+          <a class="more" href="#live">Weiterlesen →</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <!-- ================= Live ================= -->
+  <section id="live">
+    <div class="sec-title">Live auf dem Server</div>
+    <div class="stats reveal">
+      <div class="stat" id="stOnline"><div class="k">Online</div><div class="v"><span id="count">–</span><small style="font-size:.5em;color:var(--muted)"> / <span id="max">–</span></small></div><div class="s">Spieler gerade</div></div>
+      <div class="stat" id="stTps"><div class="k">Server-Leistung</div><div class="v" id="tps">–</div><div class="s">TPS (20 = perfekt)</div></div>
+      <div class="stat"><div class="k">Rekord heute</div><div class="v" id="peak">–</div><div class="s">Spieler gleichzeitig</div></div>
+      <div class="stat"><div class="k">Online seit</div><div class="v" id="uptime">–</div><div class="s" id="version">Minecraft –</div></div>
+    </div>
+    <span class="cat">Spieler online</span>
+    <div class="tiles reveal" id="players"><div class="empty">Verbinde mit dem Server …</div></div>
+    <div class="live-row">
+      <div class="panel"><h4>Spieler – letzte Stunde <span id="chPlayersNow"></span></h4><svg id="chPlayers" viewBox="0 0 400 140" preserveAspectRatio="none"></svg><div class="axis"><span id="chFrom">–</span><span>jetzt</span></div></div>
+      <div class="panel"><h4>Live-Feed <span>Joins, Kills, Käufe</span></h4><div class="feed" id="events"><div class="ev"><span class="txt" style="color:var(--muted)">Noch nichts passiert …</span></div></div></div>
+    </div>
+  </section>
+
+
+  <!-- ================= Live-Karte ================= -->
+  <section id="karte">
+    <div class="sec-title">Live-Karte</div>
+    <p class="lead">Die ganze Welt von oben – mit allen Spielern, die gerade unterwegs sind. Zoomen mit dem Mausrad, Welt oben rechts wechseln.</p>
+    <div class="map-box reveal">
+      <iframe id="mapFrame" title="Live-Karte von CrystalSMP" loading="lazy" referrerpolicy="no-referrer"></iframe>
+      <div class="map-off" id="mapOff"><div><b>🗺️ Karte lädt …</b><span id="mapOffText">Die Live-Karte ist erreichbar, sobald der Server online ist.</span></div></div>
+      <a class="map-full" id="mapFull" target="_blank" rel="noopener" hidden>Vollbild ↗</a>
+    </div>
+  </section>
+
+  <!-- ================= Ranglisten + Profil ================= -->
+  <section id="ranglisten">
+    <div class="sec-title">Ranglisten</div>
+    <p class="lead">Die besten Spieler auf CrystalSMP – wird alle paar Minuten aktualisiert. Klick auf einen Namen für das Profil.</p>
+    <div class="lb-grid reveal">
+      <div class="panel lb">
+        <div class="tabs" id="lbTabs"></div>
+        <ol class="lb-list" id="lbList"><li class="lb-empty">Lade Ranglisten …</li></ol>
+      </div>
+      <div class="panel profile">
+        <form class="search" id="searchForm" autocomplete="off">
+          <input id="searchInput" list="nameList" placeholder="Spielername suchen …" aria-label="Spielername">
+          <datalist id="nameList"></datalist>
+          <button class="btn-green" type="submit">Suchen</button>
+        </form>
+        <div id="profile" class="prof-empty">Such einen Spieler, um Skin, Statistiken und Rang zu sehen.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Team + Discord ================= -->
+  <section id="team">
+    <div class="sec-title">Das Team</div>
+    <p class="lead">Diese Leute kümmern sich um den Server. Fragen? Schreib uns im Spiel oder auf Discord.</p>
+    <div class="team-grid reveal" id="teamGrid"><div class="empty">Lade Team …</div></div>
+    <a class="discord reveal" id="discordCard" target="_blank" rel="noopener" hidden>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.3 4.4A19.8 19.8 0 0 0 15.4 3l-.6 1.3a18.4 18.4 0 0 0-5.6 0L8.6 3a19.7 19.7 0 0 0-4.9 1.5C.6 9.1-.3 13.6.1 18.1a19.9 19.9 0 0 0 6 3l1.3-2a13 13 0 0 1-2-1l.5-.4a14.2 14.2 0 0 0 12.2 0l.5.4-2 1 1.3 2a19.8 19.8 0 0 0 6-3c.5-5.2-.9-9.7-3.6-13.7ZM8 15.3c-1.2 0-2.2-1.1-2.2-2.4S6.8 10.5 8 10.5s2.2 1.1 2.2 2.4-1 2.4-2.2 2.4Zm8 0c-1.2 0-2.2-1.1-2.2-2.4s1-2.4 2.2-2.4 2.2 1.1 2.2 2.4-1 2.4-2.2 2.4Z"/></svg>
+      <div><b>Tritt unserem Discord bei</b><span>News, Events, Support und Giveaways</span></div>
+      <span class="discord-btn">Beitreten →</span>
+    </a>
+  </section>
+
+  <!-- ================= Spielmodi ================= -->
+  <section id="spielmodi">
+    <span class="cat">Highlights</span>
+    <div class="highlight pix reveal">
+      <div class="scene" style="--sky1:#ff7a3d;--sky2:#ffd27a;--glow:rgba(255,255,200,.9)">
+        <div class="glow" style="left:5%"></div><div class="ground"></div>
+        <div class="pillar" style="left:90%;height:50%;--pc1:#2b2b2b;--pc2:#1c1c1c"></div>
+        <img class="float-item" src="img/end_crystal.png" alt="" style="left:47%;top:12%;width:8%">
+        <img class="float-item" src="img/totem_of_undying.png" alt="" style="left:60%;top:30%;width:5%;animation-delay:-1.8s">
+        <img class="char render" data-skin="MHF_Steve" data-pose="yaw=40&arms=75" alt="" style="left:40%;height:80%">
+        <img class="char render" data-skin="Maxushky" data-pose="yaw=-40&arms=20" alt="" style="right:14%;height:88%">
+      </div>
+      <div class="slide-box">
+        <h2 style="font-size:28px">CRYSTAL-PVP</h2>
+        <p style="margin:0 0 12px;font-size:14px">Endkristalle, Respawn-Anker und Totems: Der schnellste und härteste PvP-Stil in Minecraft – kombiniert mit Duellen, Kopfgeld und Elo.</p>
+        <a class="btn-green" href="#joinen">Mehr erfahren</a>
+      </div>
+    </div>
+
+    <div style="height:36px"></div>
+    <span class="cat">Survival</span>
+    <div class="modes reveal" style="margin-bottom:28px">
+      <div class="tile mode" style="--t1:#6cbf3c;--t2:#2c4a1f"><img class="icon" src="img/iron_pickaxe.png" alt=""><img class="render" data-skin="MHF_Steve" data-pose="yaw=25&arms=30" alt=""><div class="shade"></div><div class="tname">SMP</div><div class="msub">Farmen, bauen, handeln</div></div>
+      <div class="tile mode" style="--t1:#5b8fd6;--t2:#22344f"><img class="icon" src="img/crafting_table.png" alt=""><img class="render" data-skin="MHF_Alex" data-pose="yaw=-25&arms=40" alt=""><div class="shade"></div><div class="tname">Clans</div><div class="msub">Gemeinsam stark</div></div>
+      <div class="tile mode" style="--t1:#e0b13a;--t2:#4a3a14"><img class="icon" src="img/diamond.png" alt=""><img class="render" data-skin="Maxushky" data-pose="yaw=20&arms=60" alt=""><div class="shade"></div><div class="tname">Plots</div><div class="msub">Dein eigenes Grundstück</div></div>
+      <div class="tile mode" style="--t1:#9b6bff;--t2:#2c1f4a"><img class="icon" src="img/blaze_rod.png" alt=""><img class="render" data-skin="MHF_Steve" data-pose="yaw=-30&arms=90" alt=""><div class="shade"></div><div class="tname">Quests</div><div class="msub">Aufgaben &amp; Belohnungen</div></div>
+    </div>
+    <span class="cat">Competitive</span>
+    <div class="modes">
+      <div class="tile mode" style="--t1:#d65b7a;--t2:#4a1f2c"><img class="icon" src="img/end_crystal.png" alt=""><img class="render" data-skin="Maxushky" data-pose="yaw=-30&arms=70" alt=""><div class="shade"></div><div class="tname">Crystal-PvP</div><div class="msub">Kristalle &amp; Totems</div></div>
+      <div class="tile mode" style="--t1:#f08a3a;--t2:#4a2a14"><img class="icon" src="img/totem_of_undying.png" alt=""><img class="render" data-skin="MHF_Alex" data-pose="yaw=30&arms=80" alt=""><div class="shade"></div><div class="tname">Duels</div><div class="msub">1 gegen 1 mit Elo</div></div>
+      <div class="tile mode" style="--t1:#e04848;--t2:#3d1414"><img class="icon" src="img/iron_pickaxe.png" alt=""><img class="render" data-skin="MHF_Steve" data-pose="yaw=-20&arms=50" alt=""><div class="shade"></div><div class="tname">Bedwars</div><div class="msub">Schütze dein Bett</div></div>
+      <div class="tile mode" style="--t1:#3ab0c9;--t2:#123a44"><img class="icon" src="img/amethyst_shard.png" alt=""><img class="render" data-skin="Maxushky" data-pose="yaw=25&arms=110" alt=""><div class="shade"></div><div class="tname">Events</div><div class="msub">Turniere &amp; Preise</div></div>
+    </div>
+  </section>
+
+  <!-- ================= Joinen ================= -->
+  <section id="joinen">
+    <div class="sec-title">So joinst du</div>
+    <p class="lead">Java und Bedrock spielen auf derselben Welt zusammen. Mods brauchst du keine.</p>
+    <div class="join-grid reveal">
+      <div class="join-card">
+        <h3>Java Edition</h3><div class="sub">PC – Windows, Mac, Linux</div>
+        <ol class="steps">
+          <li><b>Minecraft Java starten</b><span>Version 1.21.4 oder neuer.</span></li>
+          <li><b>Mehrspieler → Server hinzufügen</b><span>Name egal, z. B. CrystalSMP.</span></li>
+          <li><b>Adresse eintragen und beitreten</b><span>Das Resourcepack lädt beim Joinen automatisch.</span></li>
+        </ol>
+        <div class="addr"><span class="java-addr">crystalsmp-mc.dns.navy</span><button data-copy="java" type="button">Kopieren</button></div>
+      </div>
+      <div class="join-card bedrock">
+        <h3>Bedrock Edition</h3><div class="sub">Handy, Tablet, Windows</div>
+        <ol class="steps">
+          <li><b>Minecraft starten</b><span>Die aktuelle Version aus dem App Store.</span></li>
+          <li><b>Spielen → Server → Server hinzufügen</b><span>Ganz unten in der Server-Liste.</span></li>
+          <li><b>Adresse und Port eintragen</b><span>Speichern und beitreten – fertig.</span></li>
+        </ol>
+        <div class="addr"><span class="bedrock-addr">vivo-maine.tun.ply.gg:25940</span><button data-copy="bedrock" type="button">Kopieren</button></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Raenge ================= -->
+  <section id="raenge">
+    <div class="sec-title">Ränge</div>
+    <p class="lead">Kein Echtgeld: Alle Ränge gibt es im Spiel mit <code>/rangshop</code> – bezahlt wird mit dem Geld, das du auf dem Server verdienst.</p>
+    <div class="ranks reveal">
+      <div class="rank-card">
+        <div class="scene" style="--sky1:#5a3a00;--sky2:#f2b45c;--glow:rgba(255,230,150,.8);--top:#f2b45c;--top2:#c98a2a;--dirt:#6b4a1a;--dirt2:#3d2a0f">
+          <div class="glow"></div><div class="ground"></div>
+          <img class="char render" data-skin="MHF_Steve" data-pose="yaw=-25&arms=40" alt="" style="right:12%;height:88%">
+          <img class="float-item" src="img/diamond.png" alt="" style="left:12%;top:20%;width:42px">
+        </div>
+        <div class="rbody">
+          <div class="rank-name" style="color:#F2B45C">VIP</div>
+          <div class="price"><b>10.000 $</b> Ingame-Geld · für immer</div>
+          <ul class="perks"><li>[VIP]-Präfix im Chat und Tab</li><li>Farbiger Chat</li><li>Mehrere Homes</li><li><code>/hat</code> und <code>/workbench</code></li></ul>
+          <button class="btn-green" data-copy="rangshop" type="button" style="justify-content:center">/rangshop kopieren</button>
+        </div>
+      </div>
+      <div class="rank-card">
+        <div class="hot-ribbon">BELIEBT</div>
+        <div class="scene" style="--sky1:#5a2a00;--sky2:#ff9f1c;--glow:rgba(255,240,150,.9);--top:#ffd54a;--top2:#e0a400;--dirt:#7a5410;--dirt2:#4a3208">
+          <div class="glow"></div><div class="ground"></div>
+          <img class="char render" data-skin="Maxushky" data-pose="yaw=-25&arms=100" alt="" style="right:12%;height:88%">
+          <img class="float-item" src="img/totem_of_undying.png" alt="" style="left:12%;top:18%;width:46px">
+        </div>
+        <div class="rbody">
+          <div class="rank-name"><span style="color:#FFD54A">VIP</span><span style="color:#FF9F1C">+</span></div>
+          <div class="price"><b>25.000 $</b> Ingame-Geld · für immer</div>
+          <ul class="perks"><li>[VIP+]-Präfix im Chat und Tab</li><li>Alles von VIP</li><li><code>/nick</code> – auch farbig</li><li><code>/feed</code> – Hunger auffüllen</li></ul>
+          <div style="font-size:13px;color:var(--muted);margin:-4px 0 10px">Upgrade von VIP: nur <b style="color:var(--yellow)">15.000 $</b></div>
+          <button class="btn-green" data-copy="rangshop" type="button" style="justify-content:center">/rangshop kopieren</button>
+        </div>
+      </div>
+      <div class="rank-card">
+        <div class="scene" style="--sky1:#1b1f3a;--sky2:#4a3a8a;--glow:rgba(200,170,255,.6);--top:#5b4fa0;--top2:#3f357a;--dirt:#2b2550;--dirt2:#17132e">
+          <div class="stars"></div><div class="glow"></div><div class="ground"></div>
+          <div class="logo-text purple" style="left:8%;top:26%;font-size:34px">TEAM</div>
+          <img class="char render" data-skin="Maxushky" data-pose="yaw=-30&arms=20" alt="" style="right:10%;height:88%">
+        </div>
+        <div class="rbody">
+          <div class="rank-name" style="font-size:24px">Das Team</div>
+          <div class="price">Diese Ränge kann man nicht kaufen.</div>
+          <div class="team-list">
+            <div><b style="color:#FF3D00">Owner</b><span>Leitung</span></div>
+            <div><b style="color:#F07A7A">Admin</b><span>Verwaltung</span></div>
+            <div><b style="color:#A78BFA">Dev</b><span>Plugins &amp; Technik</span></div>
+            <div><b style="color:#5EA8F7">Moderator</b><span>Ordnung im Spiel</span></div>
+            <div><b style="color:#7FD1C7">Supporter</b><span>Hilfe für Spieler</span></div>
+            <div><b style="color:#4ADE80">Builder</b><span>Bauprojekte</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Regeln + FAQ ================= -->
+  <section id="regeln">
+    <div class="two reveal">
+      <div>
+        <div class="sec-title">Regeln</div>
+        <ol class="rules">
+          <li>Keine Hacks, Cheat-Clients oder Makros. Das Anticheat erkennt sie: Kick, Kick, dann Bann.</li>
+          <li>Kein Bug-Using und keine Dupes. Gefundene Bugs bitte melden.</li>
+          <li>Respektvoller Umgang im Chat – keine Beleidigungen, kein Spam, keine Werbung.</li>
+          <li>Kein Griefen und kein Stehlen auf fremden Grundstücken.</li>
+          <li>Kein Lag-Machen mit absichtlich riesigen Farmen oder Maschinen.</li>
+          <li>Die Entscheidungen des Teams gelten. Spieler melden: <code>/report</code></li>
+        </ol>
+      </div>
+      <div>
+        <div class="sec-title">Fragen</div>
+        <details><summary>Wann startet der Server offiziell?</summary><p>Am 3. November 2026 um 16:30 Uhr. Bis dahin kannst du schon reinschauen – der Countdown oben zeigt, wie lange es noch dauert.</p></details>
+        <details><summary>Brauche ich Mods?</summary><p>Nein. Auf Java lädt das Resourcepack beim Joinen automatisch, auf Bedrock brauchst du gar nichts.</p></details>
+        <details><summary>Kann ich mit Bedrock und Java zusammen spielen?</summary><p>Ja. Alle spielen auf derselben Welt, egal ob PC, Handy oder Tablet.</p></details>
+        <details><summary>Welche Version brauche ich?</summary><p>Java: 1.21.4 oder neuer. Bedrock: die aktuelle Version aus dem App Store.</p></details>
+        <details><summary>Kostet ein Rang echtes Geld?</summary><p>Nein. Alle Ränge kaufst du mit Ingame-Geld über <code>/rangshop</code>.</p></details>
+        <details><summary>Geht es auf Xbox, PlayStation oder Switch?</summary><p>Konsolen lassen eigene Server nur über Umwege zu, zum Beispiel mit der App „BedrockTogether“ auf dem Handy.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta pix reveal">
+    <div class="scene" style="--sky1:#2a1758;--sky2:#7b3fd0;--glow:rgba(255,190,255,.7);--top:#7a5bd6;--top2:#5b3fb5;--dirt:#3b2a63;--dirt2:#21163d">
+      <div class="stars"></div><div class="glow" style="left:20%"></div><div class="ground"></div>
+      <img class="char render hide-s" data-skin="MHF_Steve" data-pose="yaw=35&arms=60" alt="" style="left:4%;height:80%">
+      <img class="char render hide-s" data-skin="Maxushky" data-pose="yaw=-35&arms=140" alt="" style="right:4%;height:84%">
+    </div>
+    <div class="cta-box">
+      <h2>Sei am 3.11. um 16:30 dabei!</h2>
+      <p>Füg den Server jetzt schon hinzu – dann bist du beim Launch sofort drin.</p>
+      <div class="cta-btns">
+        <button class="mc-btn" data-copy="java" type="button">Java: <span class="java-addr">crystalsmp-mc.dns.navy</span></button>
+        <button class="mc-btn" data-copy="bedrock" type="button">Bedrock: <span class="bedrock-addr">vivo-maine.tun.ply.gg:25940</span></button>
+      </div>
+      <button class="btn-ghost" data-ics type="button" style="margin-top:12px">📅 Launch in meinen Kalender</button>
+    </div>
+  </div>
+
+  <section id="admin">
+    <div class="sec-title">Admin · Konsole &amp; Anticheat</div>
+    <div class="admin-box"><div class="chips" id="chips"></div><div class="feed" id="adminEvents"></div></div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <a class="brand" href="#start" style="margin-bottom:10px"><div class="shield"><span><img src="img/end_crystal.png" alt=""></span></div><div class="brand-name" style="color:#fff">CRYSTALSMP</div></a>
+      <p>Survival, Crystal-PvP, Clans und Duelle für Java und Bedrock. Launch am 3. November 2026 um 16:30 Uhr.</p>
+    </div>
+    <div>
+      <h5>Server</h5>
+      <a href="#joinen">So joinst du</a><a href="#spielmodi">Spielmodi</a><a href="#raenge">Ränge</a><a href="#regeln">Regeln &amp; FAQ</a>
+    </div>
+    <div>
+      <h5>Live</h5>
+      <p><span class="dot" id="footDot" style="display:inline-block;margin-right:6px"></span><span id="footOnline">–</span> Spieler online</p>
+      <p>Java: <span class="java-addr">crystalsmp-mc.dns.navy</span></p>
+      <p>Bedrock: <span class="bedrock-addr">vivo-maine.tun.ply.gg:25940</span></p>
+      <p id="footTime" style="color:#8a929c;font-size:12px"></p>
+    </div>
+  </div>
+  <div class="legal">© 2026 CrystalSMP · Kein offizielles Minecraft-Produkt. Nicht von Mojang oder Microsoft genehmigt oder mit ihnen verbunden.</div>
+</footer>
+
+<div class="toast" id="toast">Kopiert!</div>
+
+<script>
+(() => {
+  const $ = id => document.getElementById(id);
+  const key = new URLSearchParams(location.search).get('key');
+  const LAUNCH = new Date('2026-11-03T16:30:00+01:00');
+  const addr = { java: 'crystalsmp-mc.dns.navy', bedrock: 'vivo-maine.tun.ply.gg:25940', rangshop: '/rangshop' };
+
+  // ---------- 3D-Skins (NMSR), mit Ersatz-Render falls der Dienst nicht antwortet ----------
+  document.querySelectorAll('img[data-skin]').forEach(img => {
+    const skin = img.dataset.skin, pose = img.dataset.pose || '';
+    img.loading = img.closest('.welcome, .slide.on') ? 'eager' : 'lazy';
+    img.src = `https://nmsr.nickac.dev/fullbody/${encodeURIComponent(skin)}?${pose}&width=420`;
+    img.onerror = () => { img.onerror = null; img.src = `https://mc-heads.net/body/${encodeURIComponent(skin)}/300`; };
+  });
+
+  // ---------- Woher kommen die Live-Daten? ----------
+  //  - direkt vom Plugin (localhost:8123): gleiche Adresse -> API = ''
+  //  - auf GitHub Pages: aktuelle Tunnel-Adresse steht in api.json (traegt der Watchdog ein)
+  const GH = location.hostname.endsWith('github.io') ? {
+    owner: location.hostname.split('.')[0],
+    repo: location.pathname.split('/').filter(Boolean)[0] || location.hostname
+  } : null;
+  let API = '';
+  async function readApiConfig(url, viaGithubApi) {
+    const r = await fetch(url, { cache: 'no-store' });
+    if (!r.ok) throw new Error(r.status);
+    const d = await r.json();
+    return viaGithubApi ? JSON.parse(atob(d.content.replace(/\n/g, ''))) : d;
+  }
+  async function discoverApi() {
+    if (!GH) return true;
+    const sources = [
+      [`api.json?t=${Date.now()}`, false],
+      [`https://api.github.com/repos/${GH.owner}/${GH.repo}/contents/api.json?t=${Date.now()}`, true]
+    ];
+    for (const [url, viaApi] of sources) {
+      try {
+        const cfg = await readApiConfig(url, viaApi);
+        const api = (cfg.api || '').replace(/\/$/, '');
+        if (!api) continue;
+        if (api !== API) {
+          const ok = await fetch(api + '/api/status', { cache: 'no-store' }).then(r => r.ok).catch(() => false);
+          if (!ok) continue;
+          API = api;
+        }
+        return true;
+      } catch {}
+    }
+    return !!API;
+  }
+
+  let lastEvent = 0, lastAdmin = 0, lastOk = 0, adminFilter = 'alle', fails = 0;
+  const adminEvents = [];
+  const ICON = { join: '+', quit: '−', death: '☠', kill: '⚔', kauf: '★', chat: '✉', anticheat: '!', kick: '⛔', befehl: '/', warnung: '⚠', chatfilter: '✎' };
+  const ADMIN_TYPES = ['alle', 'anticheat', 'kick', 'befehl', 'chat', 'chatfilter', 'warnung'];
+  const ADMIN_LABEL = { alle: 'Alles', anticheat: 'Anticheat', kick: 'Kicks', befehl: 'Befehle', chat: 'Chat', chatfilter: 'Chatfilter', warnung: 'Warnungen' };
+  const TILE_COLORS = [['#5b8fd6', '#22344f'], ['#d65b7a', '#4a1f2c'], ['#6cbf3c', '#2c4a1f'], ['#e0b13a', '#4a3a14'], ['#9b6bff', '#2c1f4a'], ['#3ab0c9', '#123a44']];
+
+  const fmtTime = t => new Date(t).toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+  const fmtUptime = s => { const d = Math.floor(s / 86400), h = Math.floor(s % 86400 / 3600), m = Math.floor(s % 3600 / 60); return d > 0 ? `${d}d ${h}h` : h > 0 ? `${h}h ${m}m` : `${m}m ${s % 60}s`; };
+  const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+
+  // ---------- Kopieren ----------
+  function toast(msg) { const t = $('toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(toast.h); toast.h = setTimeout(() => t.classList.remove('show'), 1800); }
+  async function copy(text, label) { try { await navigator.clipboard.writeText(text); toast(`${label} kopiert: ${text}`); } catch { prompt('Kopieren:', text); } }
+  const LABEL = { java: 'Java-Adresse', bedrock: 'Bedrock-Adresse', rangshop: 'Befehl' };
+  document.querySelectorAll('[data-copy]').forEach(b => b.addEventListener('click', () => copy(addr[b.dataset.copy], LABEL[b.dataset.copy])));
+
+  // ---------- Slider ----------
+  const slides = [...document.querySelectorAll('.slide')];
+  let cur = 0, auto;
+  const dots = slides.map((_, i) => { const d = el('button'); d.type = 'button'; d.setAttribute('aria-label', 'Folie ' + (i + 1)); d.onclick = () => { go(i); restart(); }; return d; });
+  $('dots').append(...dots);
+  function go(i) { cur = (i + slides.length) % slides.length; slides.forEach((s, j) => s.classList.toggle('on', j === cur)); dots.forEach((d, j) => d.classList.toggle('on', j === cur)); }
+  function restart() { clearInterval(auto); auto = setInterval(() => go(cur + 1), 7000); }
+  $('prev').onclick = () => { go(cur - 1); restart(); };
+  $('next').onclick = () => { go(cur + 1); restart(); };
+  go(0); restart();
+
+  // ---------- Countdown ----------
+  function tickCountdown() {
+    const diff = LAUNCH - Date.now();
+    if (diff <= 0) {
+      document.querySelector('.countdown').replaceChildren(el('div', null, '🎉 Wir sind live!'));
+      if (tickCountdown.h) { confetti(8000); launchState(); }
+      clearInterval(tickCountdown.h);
+      return;
+    }
+    const s = Math.floor(diff / 1000);
+    $('cdD').textContent = Math.floor(s / 86400);
+    $('cdH').textContent = String(Math.floor(s % 86400 / 3600)).padStart(2, '0');
+    $('cdM').textContent = String(Math.floor(s % 3600 / 60)).padStart(2, '0');
+    $('cdS').textContent = String(s % 60).padStart(2, '0');
+  }
+  tickCountdown(); tickCountdown.h = setInterval(tickCountdown, 1000);
+
+  // ---------- Einblenden beim Scrollen ----------
+  const rev = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); rev.unobserve(e.target); } }), { threshold: .12 });
+  document.querySelectorAll('.reveal').forEach(e => rev.observe(e));
+
+  // ---------- Navigation markieren ----------
+  const navLinks = [...document.querySelectorAll('nav a')];
+  const spy = new IntersectionObserver(entries => entries.forEach(e => {
+    if (e.isIntersecting) navLinks.forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id));
+  }), { rootMargin: '-45% 0px -50% 0px' });
+  ['start', 'spielmodi', 'live', 'karte', 'ranglisten', 'joinen', 'regeln'].forEach(id => { const s = $(id); if (s) spy.observe(s); });
+
+  // ---------- Live-Status ----------
+  function setDigits(n) {
+    const s = String(Math.max(0, n)).padStart(4, '0');
+    if ($('digits').textContent === s) return;
+    $('digits').replaceChildren(...[...s].map(c => el('span', null, c)));
+  }
+  function setLive(ok) {
+    ['liveDot', 'heroDot', 'footDot'].forEach(id => $(id).classList.toggle('off', !ok));
+    $('heroState').textContent = ok ? 'gerade online' : 'Server nicht erreichbar';
+  }
+  function setAddresses(s) {
+    if (s.java) addr.java = s.java;
+    if (s.bedrock) addr.bedrock = s.bedrock;
+    document.querySelectorAll('.java-addr').forEach(e => e.textContent = e.classList.contains('up') ? addr.java.toUpperCase() : addr.java);
+    document.querySelectorAll('.bedrock-addr').forEach(e => e.textContent = addr.bedrock);
+  }
+  function renderStatus(s) {
+    document.title = `CrystalSMP · ${s.online} online · Launch 3.11. 16:30`;
+    setAddresses(s);
+    $('count').textContent = s.online; $('max').textContent = s.max;
+    $('heroCount').textContent = s.online; $('footOnline').textContent = s.online;
+    setDigits(s.online);
+    const tps = s.tps[0];
+    $('tps').textContent = tps.toFixed(1);
+    $('stTps').className = 'stat ' + (tps >= 19 ? 'good' : tps >= 15 ? 'mid' : 'low');
+    $('stOnline').className = 'stat ' + (s.online > 0 ? 'good' : '');
+    $('uptime').textContent = fmtUptime(s.uptime);
+    $('version').textContent = 'Minecraft ' + s.version;
+    $('peak').textContent = s.peak;
+    setDiscord(s.discord);
+    setupMap(s.map);
+    $('footTime').textContent = 'Stand ' + fmtTime(s.time);
+    renderPlayers(s.players);
+    renderChart(s.history);
+  }
+
+  let playerKey = null;
+  function renderPlayers(list) {
+    const k = list.map(p => p.uuid + p.rank).join('|');
+    if (k === playerKey) {
+      list.forEach(p => { const e = document.querySelector(`[data-ping="${p.uuid}"]`); if (e) e.textContent = p.ping + ' ms'; });
+      return;
+    }
+    playerKey = k;
+    const box = $('players');
+    if (!list.length) { box.replaceChildren(el('div', 'empty', 'Gerade ist niemand online – sei der Erste!')); return; }
+    box.replaceChildren(...list.map((p, i) => {
+      const t = el('div', 'tile');
+      const [c1, c2] = TILE_COLORS[i % TILE_COLORS.length];
+      t.style.setProperty('--t1', c1); t.style.setProperty('--t2', c2);
+      const img = el('img', 'render');
+      img.alt = p.name; img.loading = 'lazy';
+      const skin = p.bedrock ? 'MHF_Steve' : p.uuid.replace(/-/g, '');
+      img.src = `https://nmsr.nickac.dev/fullbody/${skin}?yaw=${i % 2 ? 25 : -25}&arms=30&width=300`;
+      img.onerror = () => { img.onerror = null; img.src = `https://mc-heads.net/body/${p.bedrock ? 'MHF_Steve' : p.uuid}/300`; };
+      t.append(img, el('div', 'shade'));
+      if (p.bedrock) t.append(el('span', 'badge-bedrock', 'Bedrock'));
+      t.append(el('div', 'tname', p.name));
+      const meta = el('div', 'tmeta');
+      const r = el('span', 'rank', p.rank); r.style.color = p.rankColor;
+      const ping = el('span', 'ping', p.ping + ' ms'); ping.dataset.ping = p.uuid;
+      meta.append(r, ping);
+      t.append(meta);
+      t.title = `${p.name} · ${p.rank}`;
+      return t;
+    }));
+  }
+
+  function renderChart(h) {
+    const svg = $('chPlayers'), values = h.players, W = 400, H = 140, pad = 6;
+    if (values.length < 2) { svg.innerHTML = '<text x="200" y="75" fill="#aab2bc" font-size="13" text-anchor="middle">Sammle Daten … (alle 10 s ein Punkt)</text>'; $('chFrom').textContent = '–'; return; }
+    const maxY = Math.max(5, ...values) * 1.15;
+    const pts = values.map((v, i) => `${(i / (values.length - 1) * W).toFixed(1)},${(H - pad - (v / maxY) * (H - pad * 2)).toFixed(1)}`);
+    const grid = [0.25, 0.5, 0.75].map(f => `<line x1="0" x2="${W}" y1="${H * f}" y2="${H * f}" stroke="#4b525b" stroke-dasharray="3 5" vector-effect="non-scaling-stroke"/>`).join('');
+    svg.innerHTML = `<defs><linearGradient id="gp" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#78bf3a" stop-opacity=".45"/><stop offset="1" stop-color="#78bf3a" stop-opacity="0"/></linearGradient></defs>${grid}
+      <polygon points="0,${H} ${pts.join(' ')} ${W},${H}" fill="url(#gp)"/>
+      <polyline points="${pts.join(' ')}" fill="none" stroke="#78bf3a" stroke-width="2.5" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>`;
+    $('chPlayersNow').textContent = `max. ${Math.max(...values)}`;
+    $('chFrom').textContent = 'vor ' + Math.round((Date.now() - h.t[0]) / 60000) + ' min';
+  }
+
+  // ---------- Feeds ----------
+  function evNode(e) {
+    const row = el('div', 'ev t-' + e.type);
+    row.append(el('span', 'ico', ICON[e.type] || '•'), el('span', 'txt', e.text), el('time', null, fmtTime(e.t)));
+    return row;
+  }
+  function addPublic(events) {
+    if (!events.length) return;
+    const box = $('events');
+    if (lastEvent === 0) box.replaceChildren();
+    events.forEach(e => box.prepend(evNode(e)));
+    while (box.children.length > 80) box.lastChild.remove();
+  }
+  function renderAdmin() {
+    const list = adminEvents.filter(e => adminFilter === 'alle' || e.type === adminFilter).slice(-200).reverse();
+    $('adminEvents').replaceChildren(...(list.length ? list.map(evNode) : [el('div', 'ev', 'Noch keine Einträge.')]));
+  }
+  function setupAdmin() {
+    $('admin').style.display = 'block';
+    $('chips').replaceChildren(...ADMIN_TYPES.map(t => {
+      const c = el('button', 'chip' + (t === adminFilter ? ' on' : ''), ADMIN_LABEL[t]);
+      c.type = 'button';
+      c.onclick = () => { adminFilter = t; setupAdmin(); renderAdmin(); };
+      return c;
+    }));
+  }
+
+
+  // ---------- Launch-Party: Banner, Konfetti, Kalender ----------
+  function launchState() {
+    const now = Date.now(), t = LAUNCH.getTime();
+    const sameDay = new Date().toDateString() === LAUNCH.toDateString();
+    if (now >= t && now - t < 2 * 86400000) { $('launchBannerText').textContent = 'CrystalSMP ist live!'; $('launchBanner').hidden = false; }
+    else if (sameDay) { $('launchBannerText').textContent = 'Heute um 16:30 Uhr ist Launch!'; $('launchBanner').hidden = false; }
+  }
+  launchState();
+  function confetti(ms) {
+    const c = $('confetti'), x = c.getContext('2d');
+    c.style.display = 'block';
+    const W = c.width = innerWidth, H = c.height = innerHeight;
+    const colors = ['#a66bff', '#ff6bd6', '#ffb36b', '#5ee7ff', '#4ade80', '#ffd34d'];
+    const bits = Array.from({ length: 220 }, () => ({ x: Math.random() * W, y: -20 - Math.random() * H, r: 4 + Math.random() * 6,
+      vx: -2 + Math.random() * 4, vy: 2 + Math.random() * 4, a: Math.random() * 6, va: -.2 + Math.random() * .4, c: colors[Math.random() * colors.length | 0] }));
+    const end = Date.now() + ms;
+    (function frame() {
+      x.clearRect(0, 0, W, H);
+      bits.forEach(b => { b.x += b.vx; b.y += b.vy; b.a += b.va; if (b.y > H + 20 && Date.now() < end) { b.y = -20; b.x = Math.random() * W; }
+        x.save(); x.translate(b.x, b.y); x.rotate(b.a); x.fillStyle = b.c; x.fillRect(-b.r / 2, -b.r / 4, b.r, b.r / 2); x.restore(); });
+      if (Date.now() < end + 3000) requestAnimationFrame(frame); else c.style.display = 'none';
+    })();
+  }
+  // Am Launch-Tag (nach 16:30) einmal pro Besuch Konfetti
+  if (Date.now() >= LAUNCH.getTime() && Date.now() - LAUNCH.getTime() < 86400000) setTimeout(() => confetti(5000), 800);
+  function downloadIcs() {
+    const stamp = d => d.toISOString().replace(/[-:]/g, '').replace(/\.\d+/, '');
+    const ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//CrystalSMP//Launch//DE', 'BEGIN:VEVENT',
+      'UID:launch-2026@crystalsmp', 'DTSTAMP:' + stamp(new Date()), 'DTSTART:' + stamp(LAUNCH), 'DTEND:' + stamp(new Date(LAUNCH.getTime() + 3 * 3600000)),
+      'SUMMARY:CrystalSMP Launch', 'DESCRIPTION:Java: ' + addr.java + ' – Bedrock: ' + addr.bedrock, 'LOCATION:' + addr.java,
+      'BEGIN:VALARM', 'TRIGGER:-PT15M', 'ACTION:DISPLAY', 'DESCRIPTION:CrystalSMP startet gleich!', 'END:VALARM',
+      'END:VEVENT', 'END:VCALENDAR'].join('\r\n');
+    const a = el('a'); a.href = URL.createObjectURL(new Blob([ics], { type: 'text/calendar' })); a.download = 'CrystalSMP-Launch.ics'; a.click();
+    toast('Kalender-Termin heruntergeladen');
+  }
+  document.querySelectorAll('[data-ics]').forEach(b => b.addEventListener('click', downloadIcs));
+
+  // ---------- Live-Karte ----------
+  function setupMap(hasMap) {
+    if (!API && GH) return;
+    if (!hasMap) { $('mapOffText').textContent = 'Die Live-Karte ist gerade nicht verfügbar.'; return; }
+    const url = API + '/map/';
+    if ($('mapFrame').dataset.src === url) return;
+    $('mapFrame').dataset.src = url;
+    $('mapFrame').src = url;
+    $('mapFrame').onload = () => { $('mapOff').style.display = 'none'; };
+    $('mapFull').href = url; $('mapFull').hidden = false;
+  }
+
+  // ---------- Ranglisten, Profil, Team ----------
+  const head = (uuid, size) => `https://mc-heads.net/avatar/${uuid}/${size}`;
+  let boards = [], boardId = 'elo';
+  function renderBoard() {
+    $('lbTabs').replaceChildren(...boards.map(b => { const t = el('button', b.id === boardId ? 'on' : '', b.title); t.type = 'button'; t.onclick = () => { boardId = b.id; renderBoard(); }; return t; }));
+    const b = boards.find(x => x.id === boardId) || boards[0];
+    if (!b || !b.rows.length) { $('lbList').replaceChildren(el('li', 'lb-empty', 'Noch keine Einträge – nach dem Launch geht es los!')); return; }
+    $('lbList').replaceChildren(...b.rows.map(r => {
+      const li = el('li'); const img = el('img'); img.src = head(r.uuid, 64); img.alt = ''; img.loading = 'lazy';
+      li.append(img, el('span', 'n', r.name), el('span', 'v', r.value.toLocaleString('de-DE')));
+      li.title = b.unit; li.onclick = () => showProfile(r.name);
+      return li;
+    }));
+  }
+  async function loadBoards() {
+    try {
+      const d = await (await fetch(API + '/api/leaderboard', { cache: 'no-store' })).json();
+      boards = d.boards || [];
+      if (!boards.find(b => b.id === boardId) && boards[0]) boardId = boards[0].id;
+      renderBoard();
+      $('nameList').replaceChildren(...(d.names || []).map(n => { const o = el('option'); o.value = n; return o; }));
+    } catch { $('lbList').replaceChildren(el('li', 'lb-empty', 'Ranglisten sind erreichbar, sobald der Server online ist.')); }
+  }
+  const ago = t => { const m = Math.round((Date.now() - t) / 60000); return m < 2 ? 'gerade eben' : m < 60 ? `vor ${m} Min.` : m < 1440 ? `vor ${Math.round(m / 60)} Std.` : `vor ${Math.round(m / 1440)} Tagen`; };
+  async function showProfile(name) {
+    const box = $('profile');
+    box.className = 'prof-empty'; box.textContent = 'Suche …';
+    if (window.innerWidth < 960) box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    try {
+      const p = await (await fetch(API + '/api/player?name=' + encodeURIComponent(name), { cache: 'no-store' })).json();
+      if (p.error) { box.textContent = `„${name}“ war noch nie auf CrystalSMP.`; return; }
+      box.className = 'prof'; box.replaceChildren();
+      const img = el('img', 'render'); img.alt = p.name;
+      const skin = p.bedrock ? 'MHF_Steve' : p.uuid.replace(/-/g, '');
+      img.src = `https://nmsr.nickac.dev/fullbody/${skin}?yaw=-25&arms=40&width=300`;
+      img.onerror = () => { img.onerror = null; img.src = `https://mc-heads.net/body/${p.bedrock ? 'MHF_Steve' : p.uuid}/200`; };
+      const info = el('div'); const h3 = el('h3', null, p.name);
+      if (p.online) h3.append(el('span', 'on-pill', 'ONLINE'));
+      const meta = el('div', 'meta', `${p.bedrock ? 'Bedrock' : 'Java'} · dabei seit ${new Date(p.firstJoin).toLocaleDateString('de-DE')} · ${p.online ? 'gerade online' : 'zuletzt ' + ago(p.lastSeen)}`);
+      const kv = el('div', 'kv');
+      [['Elo', p.elo], ['Kills', p.kills], ['K/D', p.kd.toLocaleString('de-DE')], ['Siege', p.wins], ['Spielzeit', p.hours.toLocaleString('de-DE') + ' h'], ['Geld', p.money.toLocaleString('de-DE') + ' $']]
+        .forEach(([k, v]) => { const d = el('div'); d.append(el('b', null, String(v)), el('span', null, k)); kv.append(d); });
+      info.append(h3, meta, kv);
+      box.append(img, info);
+    } catch { box.textContent = 'Profile sind erreichbar, sobald der Server online ist.'; }
+  }
+  $('searchForm').addEventListener('submit', e => { e.preventDefault(); const n = $('searchInput').value.trim(); if (n) showProfile(n); });
+  async function loadTeam() {
+    try {
+      const d = await (await fetch(API + '/api/team', { cache: 'no-store' })).json();
+      if (!d.team || !d.team.length) return;
+      $('teamGrid').replaceChildren(...d.team.map((m, i) => {
+        const c = el('div', 'member'); const img = el('img', 'render'); img.alt = m.name; img.loading = 'lazy';
+        img.src = `https://nmsr.nickac.dev/fullbody/${m.uuid.replace(/-/g, '')}?yaw=${i % 2 ? 25 : -25}&arms=30&width=200`;
+        img.onerror = () => { img.onerror = null; img.src = `https://mc-heads.net/body/${m.uuid}/120`; };
+        const r = el('span', null, m.rank); r.style.color = m.rankColor;
+        c.append(img, el('b', null, m.name), r);
+        return c;
+      }));
+    } catch {}
+  }
+  function setDiscord(link) {
+    if (!link) return;
+    $('discordCard').href = link; $('discordCard').hidden = false;
+  }
+
+  // ---------- Live-Schleifen ----------
+  async function pollStatus() {
+    try {
+      const r = await fetch(API + '/api/status', { cache: 'no-store' });
+      const s = await r.json();
+      if (!s.name) throw new Error('leer');
+      lastOk = Date.now(); fails = 0;
+      setLive(true);
+      renderStatus(s);
+      if (s.lastEvent > lastEvent) pollEvents();
+    } catch {
+      setLive(false);
+      if (GH && ++fails % 15 === 0) discoverApi();
+    }
+  }
+  async function pollEvents() {
+    if (pollEvents.busy) return;
+    pollEvents.busy = true;
+    try {
+      const r = await fetch(API + '/api/events?since=' + lastEvent, { cache: 'no-store' });
+      const d = await r.json();
+      const fresh = d.events.filter(e => e.id > lastEvent);
+      addPublic(fresh);
+      if (fresh.length) lastEvent = fresh[fresh.length - 1].id;
+    } catch {} finally { pollEvents.busy = false; }
+  }
+  async function pollAdmin() {
+    try {
+      const r = await fetch(`${API}/api/admin?key=${encodeURIComponent(key)}&since=${lastAdmin}`, { cache: 'no-store' });
+      if (r.status === 403) { toast('Admin-Key ist falsch'); return false; }
+      const d = await r.json();
+      const first = !pollAdmin.started;
+      if (first) { pollAdmin.started = true; setupAdmin(); }
+      if (d.events.length) {
+        adminEvents.push(...d.events);
+        if (adminEvents.length > 600) adminEvents.splice(0, adminEvents.length - 600);
+        lastAdmin = d.events[d.events.length - 1].id;
+      }
+      if (d.events.length || first) renderAdmin();
+      return true;
+    } catch { return true; }
+  }
+
+  setInterval(() => {
+    const ago = lastOk ? Math.round((Date.now() - lastOk) / 1000) : null;
+    $('liveText').textContent = ago === null ? 'verbinde…' : ago <= 2 ? 'LIVE' : `vor ${ago}s aktualisiert`;
+  }, 500);
+
+  discoverApi().then(() => {
+    pollStatus(); pollEvents();
+    setInterval(pollStatus, 1000);
+    setInterval(pollEvents, 3000);
+    loadBoards(); loadTeam();
+    setInterval(loadBoards, 120000); setInterval(loadTeam, 300000);
+    // Admin-Bereich nur direkt am Server-PC (nicht ueber GitHub/Tunnel)
+    if (key && !GH) pollAdmin().then(ok => { if (ok) setInterval(pollAdmin, 2000); });
+  });
+})();
+</script>
+</body>
+</html>
