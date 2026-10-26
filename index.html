@@ -404,7 +404,7 @@
       <div class="shield"><span><img src="img/end_crystal.png" alt=""></span></div>
       <div>
         <div class="brand-name">CRYSTALSMP</div>
-        <div class="brand-sub">Jetzt Spielen: <b>▷ <span class="java-addr up">CRYSTALSMP-MC.DNS.NAVY</span></b></div>
+        <div class="brand-sub">Jetzt Spielen: <b>▷ <span class="java-addr up">AB 03.11. · 16:30</span></b></div>
       </div>
     </a>
     <nav>
@@ -548,7 +548,7 @@
         <p>Joine jetzt auf CrystalSMP für ein <span class="hl">echtes Survival-Erlebnis</span>, eine <span class="hl">faire Community</span> und <span class="hl">jede Menge Crystal-PvP</span> – auf Java und Bedrock gleichzeitig!</p>
         <p>Bei uns findest du <span class="hl">Duelle</span> mit Elo, <span class="hl">Clans</span>, <span class="hl">Kopfgeld</span>, <span class="hl">Bedwars</span> und ein eigenes <span class="hl2">Anticheat</span> für faire Kämpfe.</p>
         <p>Probier es doch direkt mal aus!</p>
-        <div class="mc-input java-addr">crystalsmp-mc.dns.navy</div>
+        <div class="mc-input java-addr">🔒 ab 03.11. · 16:30</div>
         <button class="mc-btn" data-copy="java" type="button">Server beitreten</button>
       </div>
 
@@ -738,7 +738,7 @@
           <li><b>Mehrspieler → Server hinzufügen</b><span>Name egal, z. B. CrystalSMP.</span></li>
           <li><b>Adresse eintragen und beitreten</b><span>Das Resourcepack lädt beim Joinen automatisch.</span></li>
         </ol>
-        <div class="addr"><span class="java-addr">crystalsmp-mc.dns.navy</span><button data-copy="java" type="button">Kopieren</button></div>
+        <div class="addr"><span class="java-addr">🔒 ab 03.11. · 16:30</span><button data-copy="java" type="button">Kopieren</button></div>
       </div>
       <div class="join-card bedrock">
         <h3>Bedrock Edition</h3><div class="sub">Handy, Tablet, Windows</div>
@@ -747,7 +747,7 @@
           <li><b>Spielen → Server → Server hinzufügen</b><span>Ganz unten in der Server-Liste.</span></li>
           <li><b>Adresse und Port eintragen</b><span>Speichern und beitreten – fertig.</span></li>
         </ol>
-        <div class="addr"><span class="bedrock-addr">vivo-maine.tun.ply.gg:25940</span><button data-copy="bedrock" type="button">Kopieren</button></div>
+        <div class="addr"><span class="bedrock-addr">🔒 ab 03.11. · 16:30</span><button data-copy="bedrock" type="button">Kopieren</button></div>
       </div>
     </div>
   </section>
@@ -841,10 +841,10 @@
     </div>
     <div class="cta-box">
       <h2>Sei am 3.11. um 16:30 dabei!</h2>
-      <p>Füg den Server jetzt schon hinzu – dann bist du beim Launch sofort drin.</p>
+      <p>Die Server-IP wird am 3.11. um 16:30 hier freigeschaltet – stell dir eine Erinnerung!</p>
       <div class="cta-btns">
-        <button class="mc-btn" data-copy="java" type="button">Java: <span class="java-addr">crystalsmp-mc.dns.navy</span></button>
-        <button class="mc-btn" data-copy="bedrock" type="button">Bedrock: <span class="bedrock-addr">vivo-maine.tun.ply.gg:25940</span></button>
+        <button class="mc-btn" data-copy="java" type="button">Java: <span class="java-addr">🔒 ab 03.11. · 16:30</span></button>
+        <button class="mc-btn" data-copy="bedrock" type="button">Bedrock: <span class="bedrock-addr">🔒 ab 03.11. · 16:30</span></button>
       </div>
       <button class="btn-ghost" data-ics type="button" style="margin-top:12px">📅 Launch in meinen Kalender</button>
     </div>
@@ -869,8 +869,8 @@
     <div>
       <h5>Live</h5>
       <p><span class="dot" id="footDot" style="display:inline-block;margin-right:6px"></span><span id="footOnline">–</span> Spieler online</p>
-      <p>Java: <span class="java-addr">crystalsmp-mc.dns.navy</span></p>
-      <p>Bedrock: <span class="bedrock-addr">vivo-maine.tun.ply.gg:25940</span></p>
+      <p>Java: <span class="java-addr">🔒 ab 03.11. · 16:30</span></p>
+      <p>Bedrock: <span class="bedrock-addr">🔒 ab 03.11. · 16:30</span></p>
       <p id="footTime" style="color:#8a929c;font-size:12px"></p>
     </div>
   </div>
@@ -884,7 +884,9 @@
   const $ = id => document.getElementById(id);
   const key = new URLSearchParams(location.search).get('key');
   const LAUNCH = new Date('2026-11-03T16:30:00+01:00');
-  const addr = { java: 'crystalsmp-mc.dns.navy', bedrock: 'vivo-maine.tun.ply.gg:25940', rangshop: '/rangshop' };
+  const addr = { java: '', bedrock: '', rangshop: '/rangshop' };
+  // Die Server-Adresse wird erst zum Launch angezeigt (kommt dann live vom Server)
+  const locked = () => Date.now() < LAUNCH.getTime();
 
   // ---------- 3D-Skins (NMSR), mit Ersatz-Render falls der Dienst nicht antwortet ----------
   document.querySelectorAll('img[data-skin]').forEach(img => {
@@ -945,7 +947,11 @@
   function toast(msg) { const t = $('toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(toast.h); toast.h = setTimeout(() => t.classList.remove('show'), 1800); }
   async function copy(text, label) { try { await navigator.clipboard.writeText(text); toast(`${label} kopiert: ${text}`); } catch { prompt('Kopieren:', text); } }
   const LABEL = { java: 'Java-Adresse', bedrock: 'Bedrock-Adresse', rangshop: 'Befehl' };
-  document.querySelectorAll('[data-copy]').forEach(b => b.addEventListener('click', () => copy(addr[b.dataset.copy], LABEL[b.dataset.copy])));
+  document.querySelectorAll('[data-copy]').forEach(b => b.addEventListener('click', () => {
+    const k = b.dataset.copy;
+    if (k !== 'rangshop' && (locked() || !addr[k])) { toast(locked() ? '🔒 Die IP gibt es am 3.11. um 16:30!' : 'Adresse lädt noch …'); return; }
+    copy(addr[k], LABEL[k]);
+  }));
 
   // ---------- Slider ----------
   const slides = [...document.querySelectorAll('.slide')];
@@ -997,6 +1003,7 @@
     $('heroState').textContent = ok ? 'gerade online' : 'Server nicht erreichbar';
   }
   function setAddresses(s) {
+    if (locked()) return;
     if (s.java) addr.java = s.java;
     if (s.bedrock) addr.bedrock = s.bedrock;
     document.querySelectorAll('.java-addr').forEach(e => e.textContent = e.classList.contains('up') ? addr.java.toUpperCase() : addr.java);
@@ -1124,7 +1131,7 @@
     const stamp = d => d.toISOString().replace(/[-:]/g, '').replace(/\.\d+/, '');
     const ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//CrystalSMP//Launch//DE', 'BEGIN:VEVENT',
       'UID:launch-2026@crystalsmp', 'DTSTAMP:' + stamp(new Date()), 'DTSTART:' + stamp(LAUNCH), 'DTEND:' + stamp(new Date(LAUNCH.getTime() + 3 * 3600000)),
-      'SUMMARY:CrystalSMP Launch', 'DESCRIPTION:Java: ' + addr.java + ' – Bedrock: ' + addr.bedrock, 'LOCATION:' + addr.java,
+      'SUMMARY:CrystalSMP Launch', 'DESCRIPTION:Die Server-IP steht ab 16:30 auf ' + location.href.split('#')[0], 'URL:' + location.href.split('#')[0],
       'BEGIN:VALARM', 'TRIGGER:-PT15M', 'ACTION:DISPLAY', 'DESCRIPTION:CrystalSMP startet gleich!', 'END:VALARM',
       'END:VEVENT', 'END:VCALENDAR'].join('\r\n');
     const a = el('a'); a.href = URL.createObjectURL(new Blob([ics], { type: 'text/calendar' })); a.download = 'CrystalSMP-Launch.ics'; a.click();
